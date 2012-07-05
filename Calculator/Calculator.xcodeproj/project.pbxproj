@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F268023315A608BC0068A665 /* CalculatorBrains.m in Sources */ = {isa = PBXBuildFile; fileRef = F268023215A608BC0068A665 /* CalculatorBrains.m */; };
 		F268F5DE1586E62B002DE2C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F268F5DD1586E62B002DE2C6 /* UIKit.framework */; };
 		F268F5E01586E62B002DE2C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F268F5DF1586E62B002DE2C6 /* Foundation.framework */; };
 		F268F5E21586E62B002DE2C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F268F5E11586E62B002DE2C6 /* CoreGraphics.framework */; };
@@ -15,10 +16,11 @@
 		F268F5EE1586E62B002DE2C6 /* cs193AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F268F5ED1586E62B002DE2C6 /* cs193AppDelegate.m */; };
 		F268F5F11586E62B002DE2C6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F268F5EF1586E62B002DE2C6 /* MainStoryboard.storyboard */; };
 		F268F5F41586E62C002DE2C6 /* cs193ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F268F5F31586E62C002DE2C6 /* cs193ViewController.m */; };
-		F2B20D8315890CC20011D063 /* CalculatorBrains.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B20D8215890CC20011D063 /* CalculatorBrains.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F268023115A608BC0068A665 /* CalculatorBrains.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrains.h; sourceTree = "<group>"; };
+		F268023215A608BC0068A665 /* CalculatorBrains.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrains.m; sourceTree = "<group>"; };
 		F268F5D91586E62B002DE2C6 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F268F5DD1586E62B002DE2C6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F268F5DF1586E62B002DE2C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -32,8 +34,6 @@
 		F268F5F01586E62B002DE2C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F268F5F21586E62B002DE2C6 /* cs193ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cs193ViewController.h; sourceTree = "<group>"; };
 		F268F5F31586E62C002DE2C6 /* cs193ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cs193ViewController.m; sourceTree = "<group>"; };
-		F2B20D8115890CC20011D063 /* CalculatorBrains.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrains.h; sourceTree = "<group>"; };
-		F2B20D8215890CC20011D063 /* CalculatorBrains.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrains.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,11 +50,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F268023015A608910068A665 /* CalculatorBrains */ = {
+			isa = PBXGroup;
+			children = (
+				F268023115A608BC0068A665 /* CalculatorBrains.h */,
+				F268023215A608BC0068A665 /* CalculatorBrains.m */,
+			);
+			name = CalculatorBrains;
+			sourceTree = "<group>";
+		};
 		F268F5CE1586E62B002DE2C6 = {
 			isa = PBXGroup;
 			children = (
-				F2B20D8115890CC20011D063 /* CalculatorBrains.h */,
-				F2B20D8215890CC20011D063 /* CalculatorBrains.m */,
+				F268023015A608910068A665 /* CalculatorBrains */,
 				F268F5E31586E62B002DE2C6 /* Calculator */,
 				F268F5DC1586E62B002DE2C6 /* Frameworks */,
 				F268F5DA1586E62B002DE2C6 /* Products */,
@@ -170,7 +178,7 @@
 				F268F5EA1586E62B002DE2C6 /* main.m in Sources */,
 				F268F5EE1586E62B002DE2C6 /* cs193AppDelegate.m in Sources */,
 				F268F5F41586E62C002DE2C6 /* cs193ViewController.m in Sources */,
-				F2B20D8315890CC20011D063 /* CalculatorBrains.m in Sources */,
+				F268023315A608BC0068A665 /* CalculatorBrains.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
