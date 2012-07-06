@@ -29,7 +29,13 @@
 - (double) performOperation:(NSString *) operation
 {
 	[self.programStack addObject:operation];
-    return [CalculatorBrains runProgram:self.program];
+	
+	
+	// temp dictionary values until I build out the rest
+	NSArray *keys = [NSArray arrayWithObjects:@"x",@"y",@"z",nil];
+	NSArray *values =  [NSArray arrayWithObjects:[NSNumber numberWithInt:10],[NSNumber numberWithInt:20],[NSNumber numberWithInt:30],nil];
+	
+	return [CalculatorBrains runProgram:self.program usingVariables:[NSDictionary dictionaryWithObjects:values forKeys:keys]];
 }
 
 - (id)program
@@ -43,12 +49,14 @@
 }
 
 
-+ (double) runProgram:(id)program
++ (double) runProgram:(id)program usingVariables:(NSDictionary *)varaibleValues
 {
 	NSMutableArray *stack;
 	if([program isKindOfClass:[NSArray class]])
 		stack = [program mutableCopy];
 
+	// cycle through applying variable values
+	
 	return [self popOperandOffStack:stack];
 }
 
@@ -113,6 +121,8 @@
 //        result = cos([self popOperand]);
 //    } else if ([operation isEqualToString:@"Tan"]) {
 //        result = tan([self popOperand]);
+//    } else if ([operation isEqualToString:@"sqrt"]) {
+//        result = sqrt([self popOperand]);
 //    }
 //
 //    [self pushOperand:result];

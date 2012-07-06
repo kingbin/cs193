@@ -10,6 +10,7 @@
 
 @interface cs193ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *displayHistory;
 @property (weak, nonatomic) IBOutlet UILabel *displayStack;
 
 @end
