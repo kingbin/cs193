@@ -11,10 +11,20 @@
 @interface CalculatorBrains()
 	@property (nonatomic, strong) NSMutableArray *programStack;
 	@property (nonatomic, strong) NSDictionary *calcVariables;
+	@property (nonatomic, strong) NSArray *operators;
 @end
 
 @implementation CalculatorBrains
 
+/* Public Instance Variables
+ *****************************************************/
+- (id)program
+{
+	return [self.programStack copy];
+}
+
+/* Private Instance Variables
+ *****************************************************/
 	@synthesize programStack = _programStack;
 	- (NSMutableArray *) programStack{ 
 		if(!_programStack)
@@ -34,12 +44,18 @@
 		return _calcVariables;
 	}
 
-	- (id)program
-	{
-		return [self.programStack copy];
+	@synthesize operators = _operators;
+	- (NSArray *) operators{ 
+		
+		if(!_operators){ 
+			_operators = [NSArray arrayWithObjects:@"+",@"-",@"/",@"*", nil];
+		}
+		
+		return _operators;
 	}
 
-
+/* Public Instance Methods
+ *****************************************************/
 	- (void) pushOperand:(double) operand
 	{
 		[self.programStack addObject:[NSNumber numberWithDouble:operand]];
@@ -53,16 +69,13 @@
 	- (double) performOperation:(NSString *) operation
 	{
 		[self.programStack addObject:operation];
-		return [CalculatorBrains runProgram:self.program usingVariables:self.calcVariables];
+		
+		return [CalculatorBrains runProgram:self.program usingVariables:[self.calcVariables dictionaryWithValuesForKeys:[[CalculatorBrains variablesUsedInProgram:self.program] allObjects]]];
 	}
 
 
-	+ (NSString *)descriptionOfProgram:(id)program
-	{
-		return @"Assignment 2";
-	}
-
-
+/* Class Methods
+ *****************************************************/
 	+ (double) runProgram:(id)program usingVariables:(NSDictionary *)varaibleValues
 	{
 		NSMutableArray *stack;
@@ -80,13 +93,19 @@
 								   }];
 			if(indexes.count > 0)
 				[stack replaceObjectsAtIndexes:indexes withObjects:[NSArray arrayWithObject:[varaibleValues valueForKey:key]]];
-
-//			NSLog(@"%@ : %@", key, [varaibleValues objectForKey:key]);
 		}
 		
 		return [self popOperandOffStack:stack];
 	}
 
+	+ (NSString *)descriptionOfProgram:(id)program
+	{
+		return @"Assignment 2";
+	}
+
+
+/* Private Class Methods
+ *****************************************************/
 	+ (double)popOperandOffStack:(NSMutableArray *)stack
 	{
 		double result = 0;
@@ -121,20 +140,53 @@
 	}
 
 	+ (NSSet *)variablesUsedInProgram:(id)program{
-		
-		NSMutableSet *vars = [[NSMutableSet init]alloc];
-		
 		if([program isKindOfClass:[NSArray class]]){
+			NSArray *keys = [NSArray arrayWithObjects:@"x",@"y",@"z", nil];
 			
-			for (id obj in program) {
-				if ([obj isKindOfClass:[NSString class]]) {
-					[vars addObject:obj];
-				}
-			}
+			NSIndexSet *indexes = [keys indexesOfObjectsPassingTest:
+								   ^BOOL (id v, NSUInteger i, BOOL *stop) {
+									   return [program containsObject:v];
+								   }];
+			if(indexes.count > 0)
+				return [NSSet setWithArray:[keys objectsAtIndexes:indexes]];
 		}
-
-		return [vars copy];
+		
+		return nil;
 	}
+
+	+ (NSString *)descriptionOfTopOfStack:(id) stack { return @"";}
+
+	+ (BOOL)isOperation:(NSString *)operation { return [[NSArray arrayWithObjects:@"+",@"-",@"/",@"*", nil] containsObject:operation]; }
+	+ (BOOL)isSingleOperand:(NSString *)operation { return [[NSArray arrayWithObjects:@"sqrt",@"Sin",@"Cos",@"Tan", nil] containsObject:operation]; }
+	+ (BOOL)isNoOperand:(NSString *)operation { return [[NSArray arrayWithObjects:@"π",@"x",@"y",@"z", nil] containsObject:operation]; }
+	+ (BOOL)isMultiOperand:(NSString *)operation { return [[NSArray arrayWithObjects:@"+",@"-",@"*",@"/", nil] containsObject:operation]; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

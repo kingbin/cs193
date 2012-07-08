@@ -95,6 +95,13 @@
     }
 
     - (IBAction)operatorPressed:(UIButton *)sender {
+		
+//		[self.brains
+		
+		[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:2],@"x"
+		 , [NSNumber numberWithInt:0],@"y"
+		 , [NSNumber numberWithInt:0],@"z", nil];
+		
         if(self.userEnteringNumber) {
 			[self.brains pushOperand:[self.displayStack.text doubleValue]];
 			self.displayHistory.text = [self.displayHistory.text stringByAppendingFormat:@" %@", self.displayStack.text];

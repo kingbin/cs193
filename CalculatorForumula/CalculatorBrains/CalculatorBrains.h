@@ -21,7 +21,7 @@
 
 + (double) runProgram:(id)program usingVariables:(NSDictionary *)varaibleValues;
 + (NSString *)descriptionOfProgram:(id)program;
-+ (NSSet *)variablesUsedInProgram:(id)program;
-+ (BOOL)isOperation:(NSString *)operation;
+//+ (NSSet *)variablesUsedInProgram:(id)program;
+//+ (BOOL)isOperation:(NSString *)operation;
 
 @end
