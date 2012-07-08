@@ -12,9 +12,8 @@
 #include <math.h>
 
 @interface cs193ViewController ()
-    @property (nonatomic) BOOL userEnteringNumber;
-//    @property (nonatomic) BOOL userEnteringFloatNumber;
-    @property (nonatomic, strong) CalculatorBrains *brains;
+	@property (nonatomic) BOOL userEnteringNumber;
+	@property (nonatomic, strong) CalculatorBrains *brains;
 @end
 
 @implementation cs193ViewController
@@ -31,12 +30,15 @@
 
     - (IBAction)digitPressed:(UIButton *)sender {
 
+//		UIButton *button = (UIButton *)sender;
+//		int btnTag = [button superview].tag;
+		
         if( [sender.currentTitle isEqualToString:@"."] 
-           && [self.displayStack.text rangeOfString:@"."].location != NSNotFound )
+		   && [self.displayStack.text rangeOfString:@"."].location != NSNotFound)
                 return;
         else if(self.userEnteringNumber) {
 			
-			if([sender.currentTitle isEqualToString:@"π"])
+			if([sender.currentTitle isEqualToString:@"π"] || [sender tag] == 1)
 				return;
 			else if([sender.currentTitle isEqualToString:@"+/-"])
 				self.displayStack.text = [NSString stringWithFormat:@"%g", -[self.displayStack.text doubleValue]];
@@ -59,6 +61,11 @@
 				[self.brains pushOperand:[self.displayStack.text doubleValue]];
 				self.displayHistory.text = [self.displayHistory.text stringByAppendingFormat:@" %@", sender.currentTitle];
 			}
+			else if([sender tag] == 1){
+				self.displayStack.text = sender.currentTitle;
+				[self.brains pushVariable:self.displayStack.text];
+				self.displayHistory.text = [self.displayHistory.text stringByAppendingFormat:@" %@", sender.currentTitle];
+			}
 			else if([sender.currentTitle isEqualToString:@"+/-"]){
 				self.displayStack.text = [NSString stringWithFormat:@"%16.9g", [self.brains negateLastStackEntry]];
 				//self.displayHistory.text = [self.displayHistory.text stringByAppendingFormat:@" %@", sender.currentTitle];
@@ -77,7 +84,7 @@
     - (IBAction)calculatorFXN:(UIButton *)sender {
         if([sender.currentTitle isEqualToString:@"Enter"]) {
 			self.displayHistory.text = [self.displayHistory.text stringByAppendingFormat:@" %@", self.displayStack.text];
-            [self.brains pushOperand:[self.displayStack.text doubleValue]];
+			[self.brains pushOperand:[self.displayStack.text doubleValue]];
 		}
         else if([sender.currentTitle isEqualToString:@"AC"]) {
 			self.displayHistory.text = @"";
@@ -89,7 +96,7 @@
 
     - (IBAction)operatorPressed:(UIButton *)sender {
         if(self.userEnteringNumber) {
-            [self.brains pushOperand:[self.displayStack.text doubleValue]];
+			[self.brains pushOperand:[self.displayStack.text doubleValue]];
 			self.displayHistory.text = [self.displayHistory.text stringByAppendingFormat:@" %@", self.displayStack.text];
         }
         self.displayStack.text = [NSString stringWithFormat:@"%g", [self.brains performOperation:sender.currentTitle]];
@@ -101,5 +108,22 @@
     - (IBAction)trigFunction:(UIButton *)sender {
         self.displayStack.text = [NSString stringWithFormat:@"%g", [self.brains pushTrigFunction:sender.currentTitle]];
     }
+
+	- (IBAction)testFXN:(UIButton *)sender {
+		switch (sender.tag) {
+			case 2:
+				// test condition 1
+				break;
+			case 3:
+				// test condition 1
+				break;
+			case 4:
+				// test condition 1
+				break;
+			default:
+				NSLog(@"Unmapped Tag For Test Condition Method!");
+				break;
+		}
+	}
 
 @end
