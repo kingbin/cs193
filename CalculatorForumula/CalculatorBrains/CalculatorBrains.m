@@ -171,10 +171,10 @@
 			NSString *operation = topOfStack;
 			
 			if ([CalculatorBrains isNoOperand:operation]) {
-				result = operation;
+				result = [NSString stringWithFormat:@"%@, ", operation];
 			} else if ([CalculatorBrains isSingleOperand:operation]) {
 				NSString * lastDigits = [self descriptionOfTopOfStack:stack];
-				result = [NSString stringWithFormat:@"%@(%@)), ", operation, [lastDigits substringToIndex:lastDigits.length - 2 ]];
+				result = [NSString stringWithFormat:@"%@(%@), ", operation, [lastDigits substringToIndex:lastDigits.length - 2 ]];
 			} else if ([CalculatorBrains isMultiOperand:topOfStack]) {
 				NSString * lastDigits = [self descriptionOfTopOfStack:stack];
 				NSString * lastDigits2 = [self descriptionOfTopOfStack:stack];
