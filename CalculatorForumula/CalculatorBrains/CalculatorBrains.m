@@ -11,7 +11,6 @@
 @interface CalculatorBrains()
 	@property (nonatomic, strong) NSMutableArray *programStack;
 	@property (nonatomic, strong) NSDictionary *calcVariables;
-	@property (nonatomic, strong) NSArray *operators;
 @end
 
 @implementation CalculatorBrains
@@ -44,16 +43,6 @@
 		return _calcVariables;
 	}
 
-	@synthesize operators = _operators;
-	- (NSArray *) operators{ 
-		
-		if(!_operators){ 
-			_operators = [NSArray arrayWithObjects:@"+",@"-",@"/",@"*", nil];
-		}
-		
-		return _operators;
-	}
-
 /* Public Instance Methods
  *****************************************************/
 	- (void) pushOperand:(double) operand
@@ -70,7 +59,16 @@
 	{
 		[self.programStack addObject:operation];
 		
+		// need to decide how this needs to be implemented in the program
+		// this will only test multioperand programs
+		NSString *displayDescription = [CalculatorBrains descriptionOfProgram:self.program];
+		
 		return [CalculatorBrains runProgram:self.program usingVariables:[self.calcVariables dictionaryWithValuesForKeys:[[CalculatorBrains variablesUsedInProgram:self.program] allObjects]]];
+	}
+
+	- (NSString *) getProgramDescription
+	{
+		return [CalculatorBrains descriptionOfProgram:self.program];
 	}
 
 
@@ -100,7 +98,11 @@
 
 	+ (NSString *)descriptionOfProgram:(id)program
 	{
-		return @"Assignment 2";
+		NSMutableArray *stack;
+		if([program isKindOfClass:[NSArray class]])
+			stack = [program mutableCopy];
+		
+		return [self descriptionOfTopOfStack:stack];
 	}
 
 
@@ -154,7 +156,34 @@
 		return nil;
 	}
 
-	+ (NSString *)descriptionOfTopOfStack:(id) stack { return @"";}
+	+ (NSString *)descriptionOfTopOfStack:(NSMutableArray *)stack 
+	{
+		NSString *result = @"";
+		
+		id topOfStack = [stack lastObject];
+		
+		if(topOfStack) [stack removeLastObject];
+		
+		if([topOfStack isKindOfClass:[NSNumber class]])
+			result = [result stringByAppendingFormat:@"%@, ",topOfStack];
+		else if([topOfStack isKindOfClass:[NSString class]]){
+			
+			NSString *operation = topOfStack;
+			
+			if ([CalculatorBrains isNoOperand:operation]) {
+				result = operation;
+			} else if ([CalculatorBrains isSingleOperand:operation]) {
+				NSString * lastDigits = [self descriptionOfTopOfStack:stack];
+				result = [NSString stringWithFormat:@"%@(%@)), ", operation, [lastDigits substringToIndex:lastDigits.length - 2 ]];
+			} else if ([CalculatorBrains isMultiOperand:topOfStack]) {
+				NSString * lastDigits = [self descriptionOfTopOfStack:stack];
+				NSString * lastDigits2 = [self descriptionOfTopOfStack:stack];
+				result = [NSString stringWithFormat:@"(%@ %@ %@), ",[lastDigits substringToIndex:lastDigits.length - 2 ], operation, [lastDigits2 substringToIndex:lastDigits.length - 2 ]];
+			} 
+		}
+		
+		return result;
+	}
 
 	+ (BOOL)isOperation:(NSString *)operation { return [[NSArray arrayWithObjects:@"+",@"-",@"/",@"*", nil] containsObject:operation]; }
 	+ (BOOL)isSingleOperand:(NSString *)operation { return [[NSArray arrayWithObjects:@"sqrt",@"Sin",@"Cos",@"Tan", nil] containsObject:operation]; }

@@ -4,29 +4,16 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CalculatorBrains/CalculatorBrains.m"
-         timestampString = "363475797.659798"
+         timestampString = "363498068.448356"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
-         landmarkName = "+runProgram:usingVariables:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "CalculatorBrains/CalculatorBrains.m"
-         timestampString = "363407723.806557"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "28"
-         endingLineNumber = "28"
-         landmarkName = "-calcVariables"
+         startingLineNumber = "171"
+         endingLineNumber = "171"
+         landmarkName = "+descriptionOfTopOfStack:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -34,25 +21,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CalculatorBrains/CalculatorBrains.m"
-         timestampString = "363475782.077684"
+         timestampString = "363498068.448356"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "55"
-         endingLineNumber = "55"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
          landmarkName = "-performOperation:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "CalculatorBrains/CalculatorBrains.m"
-         timestampString = "363478256.635945"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
-         landmarkName = "+runProgram:usingVariables:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

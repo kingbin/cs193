@@ -12,6 +12,7 @@
 - (void) pushOperand:(double) operand;
 - (void) pushVariable:(NSString *) variable;
 - (double) performOperation:(NSString *) operation;
+- (NSString *) getProgramDescription;
 
 - (double) pushTrigFunction:(NSString *) operation;
 - (void) clearStack;
