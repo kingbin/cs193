@@ -199,17 +199,10 @@
 			NSString *operation = topOfStack;
 			
 			if ([CalculatorBrains isNoOperand:operation]) {
-<<<<<<< HEAD
-				result = [NSString stringWithFormat:@"%@, ", operation];
-			} else if ([CalculatorBrains isSingleOperand:operation]) {
-				NSString * lastDigits = [self descriptionOfTopOfStack:stack];
-				result = [NSString stringWithFormat:@"%@(%@), ", operation, [lastDigits substringToIndex:lastDigits.length - 2 ]];
-=======
 				result = [NSString stringWithFormat:@"%@ ", operation];
 			} else if ([CalculatorBrains isSingleOperand:operation]) {
 				NSString * lastDigits = [self descriptionOfTopOfStack:stack];
 				result = [NSString stringWithFormat:@"%@(%@) ", operation, [lastDigits substringToIndex:lastDigits.length - 1 ]];
->>>>>>> Finished Assignment 2 & Setup initial project for Assignment 3
 			} else if ([CalculatorBrains isMultiOperand:topOfStack]) {
 				NSString * lastDigits = [self descriptionOfTopOfStack:stack];
 				NSString * lastDigits2 = [self descriptionOfTopOfStack:stack];
