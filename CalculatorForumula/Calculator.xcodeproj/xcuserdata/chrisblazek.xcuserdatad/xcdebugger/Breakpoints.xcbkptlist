@@ -24,23 +24,10 @@
          timestampString = "363666195.20643"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "205"
-         endingLineNumber = "205"
-         landmarkName = "+descriptionOfTopOfStack:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "CalculatorBrains/CalculatorBrains.m"
-         timestampString = "363666195.20643"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
          startingLineNumber = "229"
          endingLineNumber = "229"
-         landmarkName = "-clearStack"
-         landmarkType = "5">
+         landmarkName = "@implementation CalculatorBrains"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

@@ -378,6 +378,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="operatorPressed:" destination="2" eventType="touchUpInside" id="6hz-kI-5B5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rSU-UT-9JT">
                                 <rect key="frame" x="92" y="261" width="64" height="37"/>
@@ -390,6 +393,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="operatorPressed:" destination="2" eventType="touchUpInside" id="OdX-vU-FAv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L4f-BX-HQV">
                                 <rect key="frame" x="20" y="306" width="64" height="37"/>
@@ -402,6 +408,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="operatorPressed:" destination="2" eventType="touchUpInside" id="hkZ-8V-OQr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DVQ-1Y-rY8">
                                 <rect key="frame" x="164" y="306" width="64" height="37"/>
