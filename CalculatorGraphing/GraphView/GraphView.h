@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class GraphView;
+
+@protocol GraphViewDataSource
+- (NSString *)drawFunctionGraphView:(GraphView *)sender;
+@end
+
 @interface GraphView : UIView
+
+@property (nonatomic) CGFloat scale;
+
+- (void)pinch:(UIPinchGestureRecognizer *)gesture;
+
+@property (nonatomic, weak) IBOutlet id <GraphViewDataSource> dataSource;
 
 @end

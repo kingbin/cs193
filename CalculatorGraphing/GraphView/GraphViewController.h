@@ -10,4 +10,6 @@
 
 @interface GraphViewController : UIViewController
 
+@property (nonatomic) NSArray *programStack;
+
 @end

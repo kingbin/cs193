@@ -498,13 +498,13 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ynf-cu-VJP" kind="push" identifier="OurGraph" id="73X-nY-T93"/>
+                                    <segue destination="QSG-nW-hyu" kind="push" identifier="ShowGraph" id="Zoj-tL-jpu"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="b1K-8B-rjk"/>
+                    <navigationItem key="navigationItem" title="Calculator" id="b1K-8B-rjk"/>
                     <connections>
                         <outlet property="displayHistory" destination="vlF-yB-RJL" id="96J-IW-wVc"/>
                         <outlet property="displayStack" destination="5Ac-fD-Fem" id="YYS-hE-r3Y"/>
@@ -512,22 +512,41 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-557" y="-920"/>
+            <point key="canvasLocation" x="-863" y="-824"/>
         </scene>
-        <!--Graph View Controller - Graph-->
-        <scene sceneID="zOx-tY-EV8">
+        <!--Graph View Controller-->
+        <scene sceneID="sib-aj-LdP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cEU-FV-RqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Graph" id="Ynf-cu-VJP" customClass="GraphViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DUm-SB-aHn" customClass="GraphView">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R32-58-WvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="QSG-nW-hyu" customClass="GraphViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CYc-z0-IlS">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="mED-bc-mrr" customClass="GraphView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="gok-vG-auB">
+                                        <rect key="frame" x="20" y="0.0" width="280" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="t2I-A2-AnK"/>
+                    <navigationItem key="navigationItem" id="mLt-aD-45q"/>
+                    <connections>
+                        <outlet property="graphProgram" destination="gok-vG-auB" id="qSy-nj-AWV"/>
+                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-557" y="-326"/>
+            <point key="canvasLocation" x="-849" y="-95"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YF5-Og-B2l">
@@ -545,25 +564,9 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-571" y="-1486"/>
+            <point key="canvasLocation" x="-877" y="-1480"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="GraphView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GraphView.h"/>
-        </class>
-        <class className="GraphViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GraphViewController.h"/>
-        </class>
-        <class className="cs193ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/cs193ViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="displayHistory" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="displayStack" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="testDisplayStack" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

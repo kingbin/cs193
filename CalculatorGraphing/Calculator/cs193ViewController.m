@@ -8,6 +8,7 @@
 
 #import "cs193ViewController.h"
 #import "CalculatorBrains.h"
+#import "GraphViewController.h"
 
 #include <math.h>
 
@@ -129,8 +130,21 @@
 		self.testDisplayStack.text = self.testVariableValues.description;
 	}
 
-- (void)viewDidUnload {
-	[self setTestDisplayStack:nil];
-	[super viewDidUnload];
-}
+
+	- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+	{
+		if ([segue.identifier isEqualToString:@"ShowGraph"]) {
+			[segue.destinationViewController setProgramStack:self.brains.program];
+		} 
+	}
+
+	- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+	{
+		return YES;
+	}
+
+	- (void)viewDidUnload {
+		[self setTestDisplayStack:nil];
+		[super viewDidUnload];
+	}
 @end

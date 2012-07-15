@@ -14,8 +14,10 @@
 		F268F5E81586E62B002DE2C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F268F5E61586E62B002DE2C6 /* InfoPlist.strings */; };
 		F268F5EA1586E62B002DE2C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F268F5E91586E62B002DE2C6 /* main.m */; };
 		F268F5EE1586E62B002DE2C6 /* cs193AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F268F5ED1586E62B002DE2C6 /* cs193AppDelegate.m */; };
-		F268F5F11586E62B002DE2C6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F268F5EF1586E62B002DE2C6 /* MainStoryboard.storyboard */; };
+		F268F5F11586E62B002DE2C6 /* MainStoryboard(iPhone).storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F268F5EF1586E62B002DE2C6 /* MainStoryboard(iPhone).storyboard */; };
 		F268F5F41586E62C002DE2C6 /* cs193ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F268F5F31586E62C002DE2C6 /* cs193ViewController.m */; };
+		F2A3D1CC15B1FD9A00E43BFF /* MainStoryboard(iPad).storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A3D1CB15B1FD9A00E43BFF /* MainStoryboard(iPad).storyboard */; };
+		F2A3D1D015B25AA900E43BFF /* AxesDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A3D1CF15B25AA900E43BFF /* AxesDrawer.m */; };
 		F2BFCAA815AF4C0D00A899C3 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFCAA715AF4C0D00A899C3 /* GraphView.m */; };
 		F2BFCAAC15AF4C6100A899C3 /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFCAAB15AF4C6100A899C3 /* GraphViewController.m */; };
 /* End PBXBuildFile section */
@@ -33,9 +35,12 @@
 		F268F5EB1586E62B002DE2C6 /* Calculator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calculator-Prefix.pch"; sourceTree = "<group>"; };
 		F268F5EC1586E62B002DE2C6 /* cs193AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cs193AppDelegate.h; sourceTree = "<group>"; };
 		F268F5ED1586E62B002DE2C6 /* cs193AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cs193AppDelegate.m; sourceTree = "<group>"; };
-		F268F5F01586E62B002DE2C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		F268F5F01586E62B002DE2C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = "en.lproj/MainStoryboard(iPhone).storyboard"; sourceTree = "<group>"; };
 		F268F5F21586E62B002DE2C6 /* cs193ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cs193ViewController.h; sourceTree = "<group>"; };
 		F268F5F31586E62C002DE2C6 /* cs193ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cs193ViewController.m; sourceTree = "<group>"; };
+		F2A3D1CB15B1FD9A00E43BFF /* MainStoryboard(iPad).storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "MainStoryboard(iPad).storyboard"; path = "../MainStoryboard(iPad).storyboard"; sourceTree = "<group>"; };
+		F2A3D1CE15B25AA900E43BFF /* AxesDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AxesDrawer.h; path = ../AxesDrawer/AxesDrawer.h; sourceTree = "<group>"; };
+		F2A3D1CF15B25AA900E43BFF /* AxesDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AxesDrawer.m; path = ../AxesDrawer/AxesDrawer.m; sourceTree = "<group>"; };
 		F2BFCAA615AF4C0D00A899C3 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphView.h; path = GraphView/GraphView.h; sourceTree = SOURCE_ROOT; };
 		F2BFCAA715AF4C0D00A899C3 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphView.m; path = GraphView/GraphView.m; sourceTree = SOURCE_ROOT; };
 		F2BFCAAA15AF4C6100A899C3 /* GraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphViewController.h; path = GraphView/GraphViewController.h; sourceTree = SOURCE_ROOT; };
@@ -97,9 +102,10 @@
 		F268F5E31586E62B002DE2C6 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				F2A3D1CB15B1FD9A00E43BFF /* MainStoryboard(iPad).storyboard */,
 				F268F5EC1586E62B002DE2C6 /* cs193AppDelegate.h */,
 				F268F5ED1586E62B002DE2C6 /* cs193AppDelegate.m */,
-				F268F5EF1586E62B002DE2C6 /* MainStoryboard.storyboard */,
+				F268F5EF1586E62B002DE2C6 /* MainStoryboard(iPhone).storyboard */,
 				F268F5F21586E62B002DE2C6 /* cs193ViewController.h */,
 				F268F5F31586E62C002DE2C6 /* cs193ViewController.m */,
 				F268F5E41586E62B002DE2C6 /* Supporting Files */,
@@ -121,6 +127,8 @@
 		F2BFCAAD15AF4C7900A899C3 /* GraphView */ = {
 			isa = PBXGroup;
 			children = (
+				F2A3D1CE15B25AA900E43BFF /* AxesDrawer.h */,
+				F2A3D1CF15B25AA900E43BFF /* AxesDrawer.m */,
 				F2BFCAA615AF4C0D00A899C3 /* GraphView.h */,
 				F2BFCAA715AF4C0D00A899C3 /* GraphView.m */,
 				F2BFCAAA15AF4C6100A899C3 /* GraphViewController.h */,
@@ -183,7 +191,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F268F5E81586E62B002DE2C6 /* InfoPlist.strings in Resources */,
-				F268F5F11586E62B002DE2C6 /* MainStoryboard.storyboard in Resources */,
+				F268F5F11586E62B002DE2C6 /* MainStoryboard(iPhone).storyboard in Resources */,
+				F2A3D1CC15B1FD9A00E43BFF /* MainStoryboard(iPad).storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +209,7 @@
 				F268027B15A60CA00068A665 /* CalculatorBrains.m in Sources */,
 				F2BFCAA815AF4C0D00A899C3 /* GraphView.m in Sources */,
 				F2BFCAAC15AF4C6100A899C3 /* GraphViewController.m in Sources */,
+				F2A3D1D015B25AA900E43BFF /* AxesDrawer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,12 +224,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		F268F5EF1586E62B002DE2C6 /* MainStoryboard.storyboard */ = {
+		F268F5EF1586E62B002DE2C6 /* MainStoryboard(iPhone).storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F268F5F01586E62B002DE2C6 /* en */,
 			);
-			name = MainStoryboard.storyboard;
+			name = "MainStoryboard(iPhone).storyboard";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
