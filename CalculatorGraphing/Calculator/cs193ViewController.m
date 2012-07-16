@@ -126,6 +126,7 @@
 				break;
 		}
 
+		//
 		self.displayStack.text = [NSString stringWithFormat:@"%g", [CalculatorBrains runProgram:self.brains.program usingVariables:self.testVariableValues]];
 		self.testDisplayStack.text = self.testVariableValues.description;
 	}

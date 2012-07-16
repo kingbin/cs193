@@ -32,7 +32,8 @@
 	- (void)viewDidLoad
 	{
 		[super viewDidLoad];
-		self.graphProgram.text = [CalculatorBrains descriptionOfProgram:self.programStack];
+//		self.graphProgram.text = [CalculatorBrains descriptionOfProgram:self.programStack];
+		self.graphProgram.text = [[[CalculatorBrains descriptionOfProgram:self.programStack] componentsSeparatedByString:@","] lastObject];
 	}
 
 	- (void)setGraphView:(GraphView *)graphView
@@ -57,28 +58,13 @@
 
 	- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 	{
-		return (interfaceOrientation == UIInterfaceOrientationPortrait);
+		return YES;
+//		return (interfaceOrientation == UIInterfaceOrientationPortrait);
 	}
 
-	- (NSString *)drawFunctionGraphView:(GraphView *)sender
+	- (NSArray *)drawFunctionGraphView:(GraphView *)sender
 	{
-		return [CalculatorBrains descriptionOfProgram:self.programStack];
+		//return [CalculatorBrains descriptionOfProgram:self.programStack];
+		return self.programStack;
 	}
-
-//	- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//	{
-//		self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//		if (self) {
-//			// Custom initialization
-//		}
-//		return self;
-//	}
-
-//	- (void)viewDidUnload
-//	{
-//		[self setGraphProgram:nil];
-//		[super viewDidUnload];
-//		// Release any retained subviews of the main view.
-//	}
-
 @end

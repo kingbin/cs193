@@ -11,7 +11,7 @@
 @class GraphView;
 
 @protocol GraphViewDataSource
-- (NSString *)drawFunctionGraphView:(GraphView *)sender;
+- (NSArray *)drawFunctionGraphView:(GraphView *)sender;
 @end
 
 @interface GraphView : UIView

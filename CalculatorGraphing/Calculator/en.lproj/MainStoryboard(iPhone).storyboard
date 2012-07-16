@@ -543,6 +543,7 @@
                     <navigationItem key="navigationItem" id="mLt-aD-45q"/>
                     <connections>
                         <outlet property="graphProgram" destination="gok-vG-auB" id="qSy-nj-AWV"/>
+                        <outlet property="graphView" destination="mED-bc-mrr" id="0Oq-Zm-3AH"/>
                     </connections>
                 </viewController>
             </objects>
@@ -567,6 +568,29 @@
             <point key="canvasLocation" x="-877" y="-1480"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="GraphView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GraphView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataSource"/>
+            </relationships>
+        </class>
+        <class className="GraphViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GraphViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="graphProgram" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="graphView" candidateClass="GraphView"/>
+            </relationships>
+        </class>
+        <class className="cs193ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/cs193ViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="displayHistory" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="displayStack" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="testDisplayStack" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
