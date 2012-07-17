@@ -11,5 +11,6 @@
 @interface GraphViewController : UIViewController
 
 @property (nonatomic) NSArray *programStack;
+@property (nonatomic) CGPoint axesPoint;
 
 @end

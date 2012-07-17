@@ -29,6 +29,13 @@
 		}
 	}
 
+	@synthesize axesPoint = _axesPoint;
+	- (void) setAxesPoint:(CGPoint)axesPoint
+	{
+		_axesPoint = axesPoint;
+		[self.graphView setNeedsDisplay];
+	}
+
 	- (void)viewDidLoad
 	{
 		[super viewDidLoad];
@@ -50,8 +57,7 @@
 	{
 		if ((gesture.state == UIGestureRecognizerStateChanged) ||
 			(gesture.state == UIGestureRecognizerStateEnded)) {
-//			CGPoint translation = [gesture translationInView:self.graphView];
-//			self.happiness -= translation.y / 2; // will update FaceView via setHappiness:
+			self.axesPoint = [gesture translationInView:self.graphView];
 			[gesture setTranslation:CGPointZero inView:self.graphView];
 		}
 	}
@@ -67,4 +73,11 @@
 		//return [CalculatorBrains descriptionOfProgram:self.programStack];
 		return self.programStack;
 	}
+
+	- (CGPoint)setAxesCenterPoint:(GraphView *)sender
+	{
+		return self.axesPoint;
+	}
+
+
 @end

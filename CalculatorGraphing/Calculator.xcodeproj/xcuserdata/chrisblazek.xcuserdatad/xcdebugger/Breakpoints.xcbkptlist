@@ -70,13 +70,26 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "GraphView/GraphView.m"
-         timestampString = "364156944.549411"
+         filePath = "GraphView/GraphViewController.m"
+         timestampString = "364187904.221982"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "104"
-         endingLineNumber = "104"
-         landmarkName = "-drawRect:"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
+         landmarkName = "-handleReScaleGesture:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GraphView/GraphViewController.m"
+         timestampString = "364187927.892187"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
+         landmarkName = "-setAxesCenterPoint:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
