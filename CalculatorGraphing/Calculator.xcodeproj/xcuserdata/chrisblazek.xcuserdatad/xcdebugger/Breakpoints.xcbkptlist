@@ -58,11 +58,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Calculator/cs193ViewController.m"
-         timestampString = "364095660.548751"
+         timestampString = "364396298.035015"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "137"
-         endingLineNumber = "137"
+         startingLineNumber = "139"
+         endingLineNumber = "139"
          landmarkName = "-prepareForSegue:sender:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -71,25 +71,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GraphView/GraphViewController.m"
-         timestampString = "364187904.221982"
+         timestampString = "364409702.294502"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "58"
-         endingLineNumber = "58"
-         landmarkName = "-handleReScaleGesture:"
+         startingLineNumber = "97"
+         endingLineNumber = "97"
+         landmarkName = "-handlePanGesture:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "GraphView/GraphViewController.m"
-         timestampString = "364187927.892187"
+         filePath = "GraphView/GraphView.m"
+         timestampString = "364408037.011687"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "79"
-         endingLineNumber = "79"
-         landmarkName = "-setAxesCenterPoint:"
+         startingLineNumber = "94"
+         endingLineNumber = "94"
+         landmarkName = "-drawProgram:withAxisPoint:inContext:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

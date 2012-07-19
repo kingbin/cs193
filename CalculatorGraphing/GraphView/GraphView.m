@@ -12,13 +12,17 @@
 
 #import "DDMathParser.h" // Using this to evaluate the NSString in my description seperated by ',' to a NSNumber
 
+@interface GraphView()
+	@property (nonatomic) CGFloat scale;
+@end
+
+
 @implementation GraphView
 
-@synthesize scale = _scale;
 @synthesize dataSource = _dataSource;
 
 #define DEFAULT_SCALE 10
-
+@synthesize scale = _scale;
 - (CGFloat)scale
 {
     if (!_scale) {
@@ -27,15 +31,6 @@
         return _scale;
     }
 }
-
-- (void)setScale:(CGFloat)scale
-{
-    if (scale != _scale) {
-        _scale = scale;
-        [self setNeedsDisplay]; // any time our scale changes, call for redraw
-    }
-}
-
 
 - (void)pinch:(UIPinchGestureRecognizer *)gesture
 {
@@ -97,15 +92,19 @@
 	NSArray *functionArray = [[CalculatorBrains descriptionOfProgram:function] componentsSeparatedByString:@","];
 	
 	for(NSString *s in functionArray){
-
-		if ([s isEqualToString:@"Tan"] || [s isEqualToString:@"Sin"]  || [s isEqualToString:@"Cos"] ) {
+		NSMutableString	 *f = [NSMutableString stringWithFormat:@"%@", s];
+		[f replaceOccurrencesOfString:@"x" withString:@"$x" options:NSCaseInsensitiveSearch range:NSMakeRange(0,s.length)];
+		[f replaceOccurrencesOfString:@"y" withString:@"$y" options:NSCaseInsensitiveSearch range:NSMakeRange(0,s.length)];
+		[f replaceOccurrencesOfString:@"z" withString:@"$z" options:NSCaseInsensitiveSearch range:NSMakeRange(0,s.length)];
+		
+		if ([f isEqualToString:@"Tan"] || [f isEqualToString:@"Sin"]  || [f isEqualToString:@"Cos"] ) {
 			[self drawTrigFunction:topPoint inContext:context];
 		}
 		else {
-			double d = topPoint.y - ( [[s numberByEvaluatingString] doubleValue] * self.scale );
-//			double d = topPoint.y - ( [CalculatorBrains runProgram:function usingVariables:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:1],@"x"
-//																							, [NSNumber numberWithInt:1],@"y"
-//																							, [NSNumber numberWithInt:1],@"z", nil]] * self.scale);
+			//double d = topPoint.y - ( [[f numberByEvaluatingString] doubleValue] * self.scale );
+			//[[DDMathEvaluator sharedMathEvaluator] evaluateString:f withSubstitutions:[self.dataSource useVariables:self]];
+			double d = topPoint.y - ( [[[DDMathEvaluator sharedMathEvaluator] evaluateString:f withSubstitutions:[self.dataSource useVariables:self]] doubleValue] * self.scale );
+
 			[self drawLineFunction:d inContext:context];
 		}
 	}
@@ -114,21 +113,14 @@
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
-	CGPoint topPoint; // center of our bounds in our coordinate system
-    topPoint.x = self.bounds.origin.x + self.bounds.size.width/2;
-    topPoint.y = self.bounds.origin.y + self.bounds.size.height/2;
-
-//	CGPoint topPoint = [self.dataSource setAxesCenterPoint:self];
+	CGPoint p = [self.dataSource drawAxes:self];
+	self.scale = [self.dataSource drawScale:self];
 	
-//    CGFloat size = self.bounds.size.width / 2;
-//    if (self.bounds.size.height < self.bounds.size.width) size = self.bounds.size.height / 2;
-//    size *= self.scale; // scale is percentage of full view size
-	
-	[self drawAxes:topPoint inContext:context];
+	[self drawAxes:p inContext:context];
 	
 	// Draw Function
 	NSArray *function = [self.dataSource drawFunctionGraphView:self];
-	[self drawProgram:function withAxisPoint:topPoint inContext:context];
+	[self drawProgram:function withAxisPoint:p inContext:context];
 }
 
 

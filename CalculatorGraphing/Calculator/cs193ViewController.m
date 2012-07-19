@@ -63,8 +63,10 @@
         else if( !self.userEnteringNumber ){
 			
 			if([sender.currentTitle isEqualToString:@"π"]){
-				self.displayStack.text = [NSString stringWithFormat:@"%16.9g\n", M_PI];
-				[self.brains pushOperand:[self.displayStack.text doubleValue]];
+				[self.brains pushOperand:[[NSString stringWithFormat:@"%16.9g\n", M_PI] doubleValue]];
+				//self.displayStack.text = [NSString stringWithFormat:@"%16.9g\n", M_PI];
+				self.displayStack.text = @"0";
+
 				self.displayHistory.text = [CalculatorBrains descriptionOfProgram:self.brains.program];
 			}
 			else if([sender tag] == 1){

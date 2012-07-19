@@ -12,11 +12,14 @@
 
 @protocol GraphViewDataSource
 - (NSArray *)drawFunctionGraphView:(GraphView *)sender;
+- (NSDictionary *)useVariables:(GraphView *)sender;
+- (CGPoint)drawAxes:(GraphView *)sender;
+- (CGFloat)drawScale:(GraphView *)sender;
 @end
 
 @interface GraphView : UIView
 
-@property (nonatomic) CGFloat scale;
+//@property (nonatomic) CGFloat scale;
 
 - (void)pinch:(UIPinchGestureRecognizer *)gesture;
 
