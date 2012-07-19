@@ -71,25 +71,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GraphView/GraphViewController.m"
-         timestampString = "364409702.294502"
+         timestampString = "364415478.281672"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "97"
-         endingLineNumber = "97"
-         landmarkName = "-handlePanGesture:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GraphView/GraphView.m"
-         timestampString = "364408037.011687"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "94"
-         endingLineNumber = "94"
-         landmarkName = "-drawProgram:withAxisPoint:inContext:"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
+         landmarkName = "-handleTripleTapGesture:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

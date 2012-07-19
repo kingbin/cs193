@@ -86,6 +86,11 @@
 		[self.graphView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(pinch:)]];
 		// recognize a pan gesture and modify our Model
 		[self.graphView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)]];
+		// enable triple tap gesture in the GraphView using tripleTap: handler  
+		UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTripleTapGesture:)];
+		tapGestureRecognizer.numberOfTapsRequired = 3;
+		[self.graphView addGestureRecognizer:tapGestureRecognizer];
+		
 		self.graphView.dataSource = self;
 	}
 
@@ -98,6 +103,23 @@
 			self.axesPoint = CGPointMake(self.axesPoint.x + translation.x, self.axesPoint.y + translation.y);
 			[gesture setTranslation:CGPointZero inView:self.graphView];
 		}
+	}
+
+	- (void)handleTripleTapGesture:(UIPanGestureRecognizer *)gesture
+	{
+		if (gesture.state == UIGestureRecognizerStateEnded) {
+			self.axesPoint = [gesture locationOfTouch:0 inView:self.graphView];
+//			[gesture setTranslation:CGPointZero inView:self.graphView];
+		}
+		
+		
+//		if ((gesture.state == UIGestureRecognizerStateChanged) ||
+//			(gesture.state == UIGestureRecognizerStateEnded)) {
+//			
+//			CGPoint translation = [gesture translationInView:self.graphView];
+//			self.axesPoint = CGPointMake(self.axesPoint.x + translation.x, self.axesPoint.y + translation.y);
+//			[gesture setTranslation:CGPointZero inView:self.graphView];
+//		}
 	}
 
 	- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
