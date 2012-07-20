@@ -11,14 +11,17 @@
 #import "CalculatorBrains.h"
 
 @interface GraphViewController ()<GraphViewDataSource>
-@property (nonatomic, weak) IBOutlet GraphView *graphView;
-@property (nonatomic) CGPoint axesPoint;
-@property (nonatomic) CGFloat scale;
-@property (nonatomic, strong) NSDictionary *calcVariables;
+	@property (nonatomic, weak) IBOutlet GraphView *graphView;
+	@property (nonatomic) CGPoint axesPoint;
+	@property (nonatomic) CGFloat scale;
+	@property (nonatomic, strong) NSDictionary *calcVariables;
 @end
 
 @implementation GraphViewController
 
+
+/* Controller Variables
+ *****************************************************/
 	@synthesize graphView = _graphView;
 	@synthesize programStack = _programStack;
 	- (void) setProgramStack:(NSArray *)programStack
@@ -51,6 +54,8 @@
 	{
 		if (scale != _scale) {
 			_scale = scale;
+			[[NSUserDefaults standardUserDefaults] setFloat:self.scale forKey:@"scale"];
+			[[NSUserDefaults standardUserDefaults] synchronize];
 			[self.graphView setNeedsDisplay];
 		}
 	}
@@ -68,22 +73,39 @@
 	}
 
 
-
-
-
-
+/* Controller Specific Functions
+ *****************************************************/
 	- (void)viewDidLoad
 	{
+		// Get the stored data before the view loads
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		
+		self.scale = [defaults floatForKey:@"scale"];
+		self.axesPoint = CGPointFromString([defaults stringForKey:@"axesPoint"]);
+		
+		
 		[super viewDidLoad];
-//		self.title = [[[CalculatorBrains descriptionOfProgram:self.programStack] componentsSeparatedByString:@","] lastObject];
+		//		self.title = [[[CalculatorBrains descriptionOfProgram:self.programStack] componentsSeparatedByString:@","] lastObject];
 		self.title	= [CalculatorBrains descriptionOfProgram:self.programStack];
 	}
 
+
+	- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+	{
+		return YES;
+		//		return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	}
+
+
+
+/* GraphView Gestures and Setup
+ *****************************************************/
 	- (void)setGraphView:(GraphView *)graphView
 	{
 		_graphView = graphView;
-		// enable pinch gestures in the FaceView using its pinch: handler
-		[self.graphView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(pinch:)]];
+		// enable pinch gestures in the GraphView using its pinch: handler
+		//[self.graphView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(pinch:)]];
+		[self.graphView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)]];
 		// recognize a pan gesture and modify our Model
 		[self.graphView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)]];
 		// enable triple tap gesture in the GraphView using tripleTap: handler  
@@ -94,6 +116,15 @@
 		self.graphView.dataSource = self;
 	}
 
+	- (void)handlePinchGesture:(UIPinchGestureRecognizer *)gesture
+	{
+		if ((gesture.state == UIGestureRecognizerStateChanged) ||
+			(gesture.state == UIGestureRecognizerStateEnded)) {
+			self.scale *= gesture.scale; // adjust our scale
+			gesture.scale = 1;           // reset gestures scale to 1 (so future changes are incremental, not cumulative)
+		}
+	}
+
 	- (void)handlePanGesture:(UIPanGestureRecognizer *)gesture
 	{
 		if ((gesture.state == UIGestureRecognizerStateChanged) ||
@@ -101,6 +132,8 @@
 			
 			CGPoint translation = [gesture translationInView:self.graphView];
 			self.axesPoint = CGPointMake(self.axesPoint.x + translation.x, self.axesPoint.y + translation.y);
+			[[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@", NSStringFromCGPoint(self.axesPoint)] forKey:@"axesPoint"];
+			[[NSUserDefaults standardUserDefaults] synchronize];
 			[gesture setTranslation:CGPointZero inView:self.graphView];
 		}
 	}
@@ -109,25 +142,15 @@
 	{
 		if (gesture.state == UIGestureRecognizerStateEnded) {
 			self.axesPoint = [gesture locationOfTouch:0 inView:self.graphView];
+			[[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@", NSStringFromCGPoint(self.axesPoint)] forKey:@"axesPoint"];
+			[[NSUserDefaults standardUserDefaults] synchronize];
 //			[gesture setTranslation:CGPointZero inView:self.graphView];
 		}
-		
-		
-//		if ((gesture.state == UIGestureRecognizerStateChanged) ||
-//			(gesture.state == UIGestureRecognizerStateEnded)) {
-//			
-//			CGPoint translation = [gesture translationInView:self.graphView];
-//			self.axesPoint = CGPointMake(self.axesPoint.x + translation.x, self.axesPoint.y + translation.y);
-//			[gesture setTranslation:CGPointZero inView:self.graphView];
-//		}
 	}
 
-	- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-	{
-		return YES;
-//		return (interfaceOrientation == UIInterfaceOrientationPortrait);
-	}
 
+/* GraphView Protocols
+ *****************************************************/
 	- (NSArray *)drawFunctionGraphView:(GraphView *)sender
 	{
 		//return [CalculatorBrains descriptionOfProgram:self.programStack];
@@ -136,14 +159,10 @@
 
 	- (CGPoint)drawAxes:(GraphView *)sender
 	{
-		CGPoint graphPoint; // center of our bounds in our coordinate system if it hasn't been set
-		if(self.axesPoint.x == 0)
-			graphPoint.x = self.graphView.bounds.origin.x + self.graphView.bounds.size.width/2;
-		if(self.axesPoint.y == 0)
-			graphPoint.y = self.graphView.bounds.origin.y + self.graphView.bounds.size.height/2;
-		if(graphPoint.x != 0 || graphPoint.y != 0)
-			self.axesPoint = graphPoint;
-
+		if(self.axesPoint.x == 0 && self.axesPoint.y == 0){
+			self.axesPoint = CGPointMake(self.graphView.bounds.origin.x + self.graphView.bounds.size.width/2, self.graphView.bounds.origin.y + self.graphView.bounds.size.height/2);
+		}
+		
 		return self.axesPoint;
 	}
 

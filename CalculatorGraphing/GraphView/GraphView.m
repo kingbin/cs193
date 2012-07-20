@@ -33,21 +33,6 @@
 		}
 	}
 
-//	@synthesize axesPoint = _axesPoint;
-//	- (CGPoint)axesPoint
-//	{
-//		CGPoint graphPoint; // center of our bounds in our coordinate system if it hasn't been set
-//		if(_axesPoint.x == 0)
-//			graphPoint.x = self.bounds.origin.x + self.bounds.size.width/2;
-//		if(_axesPoint.y == 0)
-//			graphPoint.y = self.bounds.origin.y + self.bounds.size.height/2;
-//		if(graphPoint.x != 0 || graphPoint.y != 0)
-//			_axesPoint = graphPoint;
-//		
-//		return _axesPoint;
-//	}
-
-
 	- (void)pinch:(UIPinchGestureRecognizer *)gesture
 	{
 		if ((gesture.state == UIGestureRecognizerStateChanged) ||
@@ -56,13 +41,6 @@
 			gesture.scale = 1;           // reset gestures scale to 1 (so future changes are incremental, not cumulative)
 		}
 	}
-
-//	- (void)tripleTap:(UITapGestureRecognizer *)gesture
-//	{
-//		if (gesture.state == UIGestureRecognizerStateEnded) {
-//			self.axesPoint = [gesture locationOfTouch:0 inView:self];
-//		}
-//	}
 
 	- (void)setup
 	{
