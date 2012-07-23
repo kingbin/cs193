@@ -9,6 +9,7 @@
 #import "cs193ViewController.h"
 #import "CalculatorBrains.h"
 #import "GraphViewController.h"
+#import "SplitViewBarButtonItemPresenter.h"
 
 #include <math.h>
 
@@ -22,20 +23,15 @@
 
     @synthesize displayStack = _displayStack;
 	@synthesize displayHistory = _displayHistory;
-//	- (UILabel *) displayHistory{ 
-//		return _displayHistory;
-//	}
 	@synthesize testDisplayStack = _testDisplayStack;
-
     @synthesize userEnteringNumber = _userEnteringNumber;
+	@synthesize testVariableValues = _testVariableValues;
 
     @synthesize brains = _brains;
     - (CalculatorBrains *) brains{ 
         if(!_brains) _brains = [[CalculatorBrains alloc]init ];
         return _brains;
     }
-
-	@synthesize testVariableValues = _testVariableValues;
 
     - (IBAction)digitPressed:(UIButton *)sender {
 
@@ -68,6 +64,8 @@
 				self.displayStack.text = @"0";
 
 				self.displayHistory.text = [CalculatorBrains descriptionOfProgram:self.brains.program];
+				
+				[[self splitViewGraphViewController] setProgramStack:self.brains.program];
 			}
 			else if([sender tag] == 1){
 				self.displayStack.text = sender.currentTitle;
@@ -99,6 +97,8 @@
             self.displayStack.text = @"0";
         }
         self.userEnteringNumber = NO;
+		
+		[[self splitViewGraphViewController] setProgramStack:self.brains.program];
     }
 
     - (IBAction)operatorPressed:(UIButton *)sender {
@@ -110,6 +110,8 @@
         self.userEnteringNumber = NO;
 
 		self.displayHistory.text = [CalculatorBrains descriptionOfProgram:self.brains.program];
+		
+		[[self splitViewGraphViewController] setProgramStack:self.brains.program];
     }
 
 	- (IBAction)testFXN:(UIButton *)sender {
@@ -131,12 +133,14 @@
 		//
 		self.displayStack.text = [NSString stringWithFormat:@"%g", [CalculatorBrains runProgram:self.brains.program usingVariables:self.testVariableValues]];
 		self.testDisplayStack.text = self.testVariableValues.description;
+		
+		[[self splitViewGraphViewController] setProgramStack:self.brains.program];
 	}
 
 
 	- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 	{
-		if ([segue.identifier isEqualToString:@"ShowGraph"]) {
+		if (!self.splitViewController && [segue.identifier isEqualToString:@"ShowGraph"]) {
 			[segue.destinationViewController setProgramStack:self.brains.program];
 		} 
 	}
@@ -144,6 +148,16 @@
 	- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 	{
 		return YES;
+	}
+
+
+	- (GraphViewController *)splitViewGraphViewController
+	{
+		id g = [self.splitViewController.viewControllers lastObject];
+		if (![g isKindOfClass:[GraphViewController class]]) {
+			g = nil;
+		}
+		return g;
 	}
 
 	- (void)viewDidUnload {

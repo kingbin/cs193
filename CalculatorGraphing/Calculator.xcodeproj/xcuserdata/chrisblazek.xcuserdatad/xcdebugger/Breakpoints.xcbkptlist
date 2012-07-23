@@ -57,71 +57,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Calculator/cs193ViewController.m"
-         timestampString = "364396298.035015"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "139"
-         endingLineNumber = "139"
-         landmarkName = "-prepareForSegue:sender:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GraphView/GraphViewController.m"
-         timestampString = "364496354.448728"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "81"
-         endingLineNumber = "81"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GraphView/GraphViewController.m"
-         timestampString = "364499859.134315"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "133"
-         endingLineNumber = "133"
-         landmarkName = "-handlePanGesture:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GraphView/GraphViewController.m"
-         timestampString = "364499859.134315"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "162"
-         endingLineNumber = "162"
-         landmarkName = "-drawAxes:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GraphView/GraphViewController.m"
-         timestampString = "364497097.067662"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "56"
-         endingLineNumber = "56"
-         landmarkName = "-setScale:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "GraphView/GraphView.m"
          timestampString = "364498395.118726"
          startingColumnNumber = "9223372036854775807"
@@ -135,39 +70,26 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "GraphView/GraphViewController.m"
-         timestampString = "364499859.134315"
+         filePath = "GraphView/GraphView.m"
+         timestampString = "364687823.300853"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "171"
-         endingLineNumber = "171"
-         landmarkName = "-drawScale:"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
+         landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "GraphView/GraphViewController.m"
-         timestampString = "364499807.466203"
+         filePath = "iPad/RotatableViewController.m"
+         timestampString = "364703660.875707"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "144"
-         endingLineNumber = "144"
-         landmarkName = "-handleTripleTapGesture:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GraphView/GraphViewController.m"
-         timestampString = "364499815.870622"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "124"
-         endingLineNumber = "124"
-         landmarkName = "-handlePinchGesture:"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "-splitViewController:willHideViewController:withBarButtonItem:forPopoverController:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

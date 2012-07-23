@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RotatableViewController.h"
 
-@interface cs193ViewController : UIViewController
+@interface cs193ViewController : RotatableViewController
 
 	@property (weak, nonatomic) IBOutlet UILabel *testDisplayStack;
 	@property (weak, nonatomic) IBOutlet UILabel *displayHistory;

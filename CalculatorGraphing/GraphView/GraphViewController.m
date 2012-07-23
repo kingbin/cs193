@@ -12,6 +12,8 @@
 
 @interface GraphViewController ()<GraphViewDataSource>
 	@property (nonatomic, weak) IBOutlet GraphView *graphView;
+	@property (nonatomic, weak) IBOutlet UIToolbar *toolbar;        // to put splitViewBarButtonitem in
+
 	@property (nonatomic) CGPoint axesPoint;
 	@property (nonatomic) CGFloat scale;
 	@property (nonatomic, strong) NSDictionary *calcVariables;
@@ -22,6 +24,9 @@
 
 /* Controller Variables
  *****************************************************/
+	@synthesize splitViewBarButtonItem = _splitViewBarButtonItem;   // implementation of SplitViewBarButtonItemPresenter protocol
+	@synthesize toolbar = _toolbar;                                 // to put splitViewBarButtonItem in
+
 	@synthesize graphView = _graphView;
 	@synthesize programStack = _programStack;
 	- (void) setProgramStack:(NSArray *)programStack
@@ -75,6 +80,22 @@
 
 /* Controller Specific Functions
  *****************************************************/
+	- (void)handleSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
+	{
+		NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
+		if (_splitViewBarButtonItem) [toolbarItems removeObject:_splitViewBarButtonItem];
+		if (splitViewBarButtonItem) [toolbarItems insertObject:splitViewBarButtonItem atIndex:0];
+		self.toolbar.items = toolbarItems;
+		_splitViewBarButtonItem = splitViewBarButtonItem;
+	}
+
+	- (void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
+	{
+		if (splitViewBarButtonItem != _splitViewBarButtonItem) {
+			[self handleSplitViewBarButtonItem:splitViewBarButtonItem];
+		}
+	}
+
 	- (void)viewDidLoad
 	{
 		// Get the stored data before the view loads
@@ -83,10 +104,10 @@
 		self.scale = [defaults floatForKey:@"scale"];
 		self.axesPoint = CGPointFromString([defaults stringForKey:@"axesPoint"]);
 		
-		
 		[super viewDidLoad];
-		//		self.title = [[[CalculatorBrains descriptionOfProgram:self.programStack] componentsSeparatedByString:@","] lastObject];
 		self.title	= [CalculatorBrains descriptionOfProgram:self.programStack];
+		
+		[self handleSplitViewBarButtonItem:self.splitViewBarButtonItem];
 	}
 
 
@@ -175,5 +196,12 @@
 	{
 		return self.calcVariables;
 	}
+
+// BOOL iPad = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
+// self.splitViewController
+// View On Screen -> window = nil false || self.view.window
+// @psoperty (CGFloat) contentScaleFactor
+
+
 
 @end
