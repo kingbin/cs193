@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F21F3E1815C6F25C006DD1AA /* flickr-topPlaces.png in Resources */ = {isa = PBXBuildFile; fileRef = F21F3E1715C6F25C006DD1AA /* flickr-topPlaces.png */; };
+		F21F3E1D15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F3E1C15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.m */; };
 		F2D8888415C1A13B00340813 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D8888315C1A13B00340813 /* UIKit.framework */; };
 		F2D8888615C1A13B00340813 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D8888515C1A13B00340813 /* Foundation.framework */; };
 		F2D8888815C1A13B00340813 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D8888715C1A13B00340813 /* CoreGraphics.framework */; };
@@ -28,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F21F3E1715C6F25C006DD1AA /* flickr-topPlaces.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "flickr-topPlaces.png"; path = "../../../../../../Desktop/flickr-topPlaces.png"; sourceTree = "<group>"; };
+		F21F3E1B15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cs193FlickrPhotoListViewController.h; sourceTree = "<group>"; };
+		F21F3E1C15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cs193FlickrPhotoListViewController.m; sourceTree = "<group>"; };
 		F2D8887F15C1A13B00340813 /* FlickrMonster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrMonster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2D8888315C1A13B00340813 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F2D8888515C1A13B00340813 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -104,6 +109,9 @@
 		F2D8888915C1A13B00340813 /* FlickrMonster */ = {
 			isa = PBXGroup;
 			children = (
+				F21F3E1B15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.h */,
+				F21F3E1C15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.m */,
+				F21F3E1715C6F25C006DD1AA /* flickr-topPlaces.png */,
 				F2D8889215C1A13B00340813 /* cs193AppDelegate.h */,
 				F2D8889315C1A13B00340813 /* cs193AppDelegate.m */,
 				F2D8889515C1A13B00340813 /* MainStoryboard_iPhone.storyboard */,
@@ -215,6 +223,7 @@
 				F2D888A615C1A13B00340813 /* second.png in Resources */,
 				F2D888A815C1A13B00340813 /* second@2x.png in Resources */,
 				F2D888B215C1C7BF00340813 /* shoes.jpeg in Resources */,
+				F21F3E1815C6F25C006DD1AA /* flickr-topPlaces.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +241,7 @@
 				F2D888B015C1C20B00340813 /* cs193FlickrTopPlacesViewController.m in Sources */,
 				F2D888B715C2F93D00340813 /* FlickrFetcher.m in Sources */,
 				F2D888BA15C3425200340813 /* Player.m in Sources */,
+				F21F3E1D15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +367,7 @@
 				F2D888AD15C1A13B00340813 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
