@@ -110,6 +110,11 @@
 		[self handleSplitViewBarButtonItem:self.splitViewBarButtonItem];
 	}
 
+	- (void)viewDidUnload
+	{
+		self.graphView = nil;
+	}
+
 
 	- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 	{
