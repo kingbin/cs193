@@ -20,10 +20,10 @@
     //[self.loadFlickrPictureList];
 }
 
-@synthesize sectionTitle = _sectionList;
-- (void) setSectionTitle{
-    // still figuring out my logic
-}
+//@synthesize sectionTitle = _sectionList;
+//- (void) setSectionTitle{
+//    // still figuring out my logic
+//}
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -71,16 +71,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"photoList";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
+	
+	
     
     return cell;
 }
 
 
+/*
+ 
+ ******************************/
 
+- (void)setPhotoList:(NSArray *)photoList withTitle:(NSString *)title {
+	self.photoList = photoList;
+	self.title = title;
+}
 
 
 

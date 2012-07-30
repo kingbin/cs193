@@ -11,6 +11,6 @@
 @interface cs193FlickrPhotoListViewController : UITableViewController
 
 @property (nonatomic,strong) NSArray *photoList;
-@property (nonatomic,strong) NSString *sectionTitle;
+- (void)setPhotoList:(NSArray *)photoList withTitle:(NSString *)title;
 
 @end

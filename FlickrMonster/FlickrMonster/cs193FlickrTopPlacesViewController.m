@@ -9,6 +9,8 @@
 #import "cs193FlickrTopPlacesViewController.h"
 #import "FlickrFetcher/FlickrFetcher.h"
 
+#import "cs193FlickrPhotoListViewController.h"
+
 @interface cs193FlickrTopPlacesViewController ()
 	@property (nonatomic) NSArray *flickrPlaces;
 @end
@@ -113,7 +115,16 @@
 
 
 
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+	
+	if (!self.tableView && [segue.identifier isEqualToString:@"ShowGraph"]) {
+		NSArray *photosList = [FlickrFetcher photosInPlace:[self.flickrPlaces objectAtIndex:indexPath.row] maxResults:50 ];
+		
+		[segue.destinationViewController setPhotoList:photosList withTitle:@"test" ];
+	}
+}
 
 
 

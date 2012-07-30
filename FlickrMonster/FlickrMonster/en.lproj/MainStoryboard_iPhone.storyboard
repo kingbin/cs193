@@ -58,6 +58,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="ugY-FP-axE" kind="push" id="Erb-p7-XXY"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -78,13 +81,13 @@
         <scene sceneID="6dm-hV-SB4">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75M-if-4jW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="ugY-FP-axE" customClass="cs193FlickrPhotoListViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="photoList" id="ugY-FP-axE" customClass="cs193FlickrPhotoListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="epS-cq-30W">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="K2T-GI-0aJ" detailTextLabel="VhF-ri-7ct" style="IBUITableViewCellStyleSubtitle" id="mx0-na-kyB">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="photoListCell" textLabel="K2T-GI-0aJ" detailTextLabel="VhF-ri-7ct" style="IBUITableViewCellStyleSubtitle" id="mx0-na-kyB">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -115,6 +118,10 @@
                             <outlet property="delegate" destination="ugY-FP-axE" id="cbv-py-zB6"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="P8k-wB-Ea6"/>
+                    <connections>
+                        <outlet property="view" destination="epS-cq-30W" id="loH-xQ-MWv"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1604" y="-168"/>
@@ -175,7 +182,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0UN-ke-XYr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="jzy-KY-zCO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Top Places" image="flickr-topPlaces.png" id="N6q-2S-eyV"/>
+                    <tabBarItem key="tabBarItem" title="Top Places" image="second" id="N6q-2S-eyV"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="v3w-pf-KJo">
@@ -193,7 +200,6 @@
     </scenes>
     <resources>
         <image name="first" width="16" height="16"/>
-        <image name="flickr-topPlaces.png" width="32" height="32"/>
         <image name="second" width="16" height="16"/>
         <image name="shoes.jpeg" width="48" height="48"/>
     </resources>
