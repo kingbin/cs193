@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="SNC-6g-xXc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="SNC-6g-xXc">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
-        <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
         <!--Cs193 View Controller - Calc-->
@@ -514,7 +513,7 @@
             </objects>
             <point key="canvasLocation" x="-863" y="-824"/>
         </scene>
-        <!--Graph View Controller-->
+        <!--Graph View Controller - Graph-->
         <scene sceneID="sib-aj-LdP">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R32-58-WvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -526,18 +525,80 @@
                             <view contentMode="scaleToFill" id="mED-bc-mrr" customClass="GraphView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EcL-Ae-TQJ">
+                                        <rect key="frame" x="184" y="359" width="116" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Save to Favs">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveToFavs:" destination="QSG-nW-hyu" eventType="touchUpInside" id="QBg-g0-bLr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="mLt-aD-45q"/>
+                    <navigationItem key="navigationItem" title="Graph" id="mLt-aD-45q">
+                        <barButtonItem key="rightBarButtonItem" title="Favorites" id="E0g-TQ-ItD">
+                            <connections>
+                                <segue destination="MuQ-eH-7WF" kind="push" identifier="ShowFavorites" id="avW-5s-wIY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="graphView" destination="mED-bc-mrr" id="0Oq-Zm-3AH"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-849" y="-95"/>
+            <point key="canvasLocation" x="-853" y="-79"/>
+        </scene>
+        <!--Cs193 Graph Calculator Favorites Table View Controller-->
+        <scene sceneID="XZU-4v-830">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bwD-2A-sYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="MuQ-eH-7WF" customClass="cs193GraphCalculatorFavoritesTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1hg-f5-Oz7">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Calculator Program Description" textLabel="nPe-09-Xtd" style="IBUITableViewCellStyleDefault" id="ogx-Ij-r9S">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nPe-09-Xtd">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MuQ-eH-7WF" id="X9J-p6-ngC"/>
+                            <outlet property="delegate" destination="MuQ-eH-7WF" id="BUN-ae-oe9"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="X7Q-HD-eyW"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="-325" y="-162"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YF5-Og-B2l">
@@ -568,12 +629,24 @@
         <class className="GraphViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GraphViewController.h"/>
             <relationships>
+                <relationship kind="action" name="saveToFavs:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="graphView" candidateClass="GraphView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
-        <class className="cs193ViewController" superclassName="UIViewController">
+        <class className="RotatableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatableViewController.h"/>
+        </class>
+        <class className="cs193GraphCalculatorFavoritesTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/cs193GraphCalculatorFavoritesTableViewController.h"/>
+        </class>
+        <class className="cs193ViewController" superclassName="RotatableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/cs193ViewController.h"/>
             <relationships>
+                <relationship kind="action" name="calculatorFXN:" candidateClass="UIButton"/>
+                <relationship kind="action" name="digitPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="operatorPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="testFXN:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="displayHistory" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="displayStack" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="testDisplayStack" candidateClass="UILabel"/>

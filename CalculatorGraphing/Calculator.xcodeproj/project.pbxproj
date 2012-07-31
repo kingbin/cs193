@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F2551F4715C75CC3000DA5E9 /* cs193GraphCalculatorFavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2551F4615C75CC3000DA5E9 /* cs193GraphCalculatorFavoritesTableViewController.m */; };
 		F268027B15A60CA00068A665 /* CalculatorBrains.m in Sources */ = {isa = PBXBuildFile; fileRef = F268027A15A60CA00068A665 /* CalculatorBrains.m */; };
 		F268F5DE1586E62B002DE2C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F268F5DD1586E62B002DE2C6 /* UIKit.framework */; };
 		F268F5E01586E62B002DE2C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F268F5DF1586E62B002DE2C6 /* Foundation.framework */; };
@@ -45,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F2551F4515C75CC3000DA5E9 /* cs193GraphCalculatorFavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cs193GraphCalculatorFavoritesTableViewController.h; path = ../cs193GraphCalculatorFavoritesTableViewController.h; sourceTree = "<group>"; };
+		F2551F4615C75CC3000DA5E9 /* cs193GraphCalculatorFavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cs193GraphCalculatorFavoritesTableViewController.m; path = ../cs193GraphCalculatorFavoritesTableViewController.m; sourceTree = "<group>"; };
 		F268027915A60CA00068A665 /* CalculatorBrains.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorBrains.h; path = CalculatorBrains/CalculatorBrains.h; sourceTree = "<group>"; };
 		F268027A15A60CA00068A665 /* CalculatorBrains.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculatorBrains.m; path = CalculatorBrains/CalculatorBrains.m; sourceTree = "<group>"; };
 		F268F5D91586E62B002DE2C6 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +264,8 @@
 		F2BFCAAD15AF4C7900A899C3 /* GraphView */ = {
 			isa = PBXGroup;
 			children = (
+				F2551F4515C75CC3000DA5E9 /* cs193GraphCalculatorFavoritesTableViewController.h */,
+				F2551F4615C75CC3000DA5E9 /* cs193GraphCalculatorFavoritesTableViewController.m */,
 				F2A3D1CE15B25AA900E43BFF /* AxesDrawer.h */,
 				F2A3D1CF15B25AA900E43BFF /* AxesDrawer.m */,
 				F2BFCAA615AF4C0D00A899C3 /* GraphView.h */,
@@ -366,6 +371,7 @@
 				F278052815B5058500839FD5 /* DDTypes.m in Sources */,
 				F278052915B5058500839FD5 /* NSString+DDMathParsing.m in Sources */,
 				F278053615BCE67500839FD5 /* RotatableViewController.m in Sources */,
+				F2551F4715C75CC3000DA5E9 /* cs193GraphCalculatorFavoritesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

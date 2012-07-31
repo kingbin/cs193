@@ -61,12 +61,68 @@
 		return self;
 	}
 
-	- (void)drawTrigFunctioninContext:(CGContextRef)context
+
+	- (CGPoint)convertToGraphCoordinateFromViewCoordinate:(CGPoint)coordinate withAxesPoint:(CGPoint)axesPoint {
+		
+		CGPoint graphCoordinate;
+		
+		graphCoordinate.x = (coordinate.x - axesPoint.x) / self.scale;
+		graphCoordinate.y = (axesPoint.y - coordinate.y) / self.scale;
+		
+		return graphCoordinate;
+	}
+
+	- (CGPoint) convertToViewCoordinateFromGraphCoordinate:(CGPoint)coordinate withAxesPoint:(CGPoint)axesPoint{
+		
+		CGPoint viewCoordinate;
+		
+		viewCoordinate.x = (coordinate.x * self.scale) + axesPoint.x;
+		viewCoordinate.y = axesPoint.y - (coordinate.y * self.scale);
+		
+		return viewCoordinate;
+	}
+
+	- (void)drawTrigFunction:(NSString *)program withAxesPoint:(CGPoint)axesPoint inContext:(CGContextRef)context
 	{
 		UIGraphicsPushContext(context);
-	//    CGContextBeginPath(context);
-	//    CGContextAddArc(context, p.x, p.y, radius, 0, 2*M_PI, YES); // 360 degree (0 to 2pi) arc
-	//    CGContextStrokePath(context);
+		
+		CGFloat startingX = self.bounds.origin.x;
+		CGFloat endingX = self.bounds.origin.x + self.bounds.size.width;
+		CGFloat increment = 1/(self.contentScaleFactor * self.scale); // To enable iteration over pixels
+		
+		BOOL firstPoint = YES;
+		
+		// Iterate over the horizontal pixels, plotting the corresponding y values
+		for (CGFloat x = startingX; x<= endingX; x+=increment) {
+			// Identify the starting X point for the curve and convert to graph coordinates.
+			// Then retrieve the corresponding Y value and convert it back to view coordindates
+			CGPoint coordinate;
+			coordinate.x = x;
+			coordinate = [self convertToGraphCoordinateFromViewCoordinate:coordinate withAxesPoint:axesPoint];
+			
+//			double yValue = [CalculatorBrains runProgram:program usingVariables:[NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:coordinate.x] forKey:@"x"]];
+//			coordinate.y = yValue;
+//			coordinate.y = [self.dataSource YValueForXValue:coordinate.x inGraphView:self];
+			
+			double d = [[[DDMathEvaluator sharedMathEvaluator] evaluateString:program withSubstitutions:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:coordinate.x],@"x",nil]] doubleValue];
+			coordinate.y = d;
+			coordinate = [self convertToViewCoordinateFromGraphCoordinate:coordinate withAxesPoint:axesPoint];
+			coordinate.x = x;
+			
+			// Handle the edge cases
+			if (coordinate.y == NAN || coordinate.y == INFINITY || coordinate.y == -INFINITY)
+				continue;
+			
+			if (firstPoint) {
+				CGContextMoveToPoint(context, coordinate.x, coordinate.y);
+				firstPoint = NO;
+			}
+			
+			CGContextAddLineToPoint(context, coordinate.x, coordinate.y);
+			
+		}
+		CGContextStrokePath(context);
+		
 		UIGraphicsPopContext();
 	}
 
@@ -97,9 +153,11 @@
 			[f replaceOccurrencesOfString:@"x" withString:@"$x" options:NSCaseInsensitiveSearch range:NSMakeRange(0,s.length)];
 			[f replaceOccurrencesOfString:@"y" withString:@"$y" options:NSCaseInsensitiveSearch range:NSMakeRange(0,s.length)];
 			[f replaceOccurrencesOfString:@"z" withString:@"$z" options:NSCaseInsensitiveSearch range:NSMakeRange(0,s.length)];
-			
-			if ([f isEqualToString:@"Tan"] || [f isEqualToString:@"Sin"]  || [f isEqualToString:@"Cos"] ) {
-				[self drawTrigFunctioninContext:context];
+			if ([f rangeOfString:@"Tan"].location != NSNotFound
+				|| [f rangeOfString:@"Sin"].location != NSNotFound
+				|| [f rangeOfString:@"Cos"].location != NSNotFound
+				|| [f rangeOfString:@"SQRT"].location != NSNotFound) {
+				[self drawTrigFunction:f withAxesPoint:axesPoint inContext:context];
 			}
 			else {
 				//double d = topPoint.y - ( [[f numberByEvaluatingString] doubleValue] * self.scale );

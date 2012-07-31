@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GraphView/GraphView.m"
-         timestampString = "364687823.300853"
+         timestampString = "365400965.827912"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "116"
-         endingLineNumber = "116"
+         startingLineNumber = "174"
+         endingLineNumber = "174"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -79,6 +79,32 @@
          startingLineNumber = "46"
          endingLineNumber = "46"
          landmarkName = "-splitViewController:willHideViewController:withBarButtonItem:forPopoverController:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "cs193GraphCalculatorFavoritesTableViewController.m"
+         timestampString = "365395910.4253"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "123"
+         endingLineNumber = "123"
+         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GraphView/GraphView.m"
+         timestampString = "365400965.827912"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
+         landmarkName = "-drawTrigFunction:withAxesPoint:inContext:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

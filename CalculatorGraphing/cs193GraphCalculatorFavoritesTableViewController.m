@@ -1,18 +1,23 @@
 //
-//  cs193GraphCalculatorFavorites.m
+//  cs193GraphCalculatorFavoritesTableViewController.m
 //  Calculator
 //
 //  Created by Chris Blazek on 7/30/12.
 //  Copyright (c) 2012 628 Productions. All rights reserved.
 //
 
-#import "cs193GraphCalculatorFavorites.h"
+#import "cs193GraphCalculatorFavoritesTableViewController.h"
 
-@interface cs193GraphCalculatorFavorites ()
+#import "CalculatorBrains/CalculatorBrains.h"
+
+@interface cs193GraphCalculatorFavoritesTableViewController ()
 
 @end
 
-@implementation cs193GraphCalculatorFavorites
+@implementation cs193GraphCalculatorFavoritesTableViewController
+
+@synthesize programs = _programs;
+@synthesize delegate = _delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,6 +28,7 @@
     return self;
 }
 
+#pragma mark - View LifeStyle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,6 +38,9 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	
+	
+	
 }
 
 - (void)viewDidUnload
@@ -46,28 +55,24 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
+
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [self.programs count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Calculator Program Description";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	
+	if(!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
-    // Configure the cell...
+	id program = [self.programs objectAtIndex:indexPath.row];
+	cell.textLabel.text = [@"y = " stringByAppendingString:[CalculatorBrains descriptionOfProgram:program]];
     
     return cell;
 }
@@ -111,17 +116,12 @@
 }
 */
 
-#pragma mark - Table view delegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+	id program = [self.programs objectAtIndex:indexPath.row];
+	[self.delegate cs193GraphCalculatorFavoritesTableViewController:self choseProgram:program];
 }
 
 @end

@@ -9,8 +9,9 @@
 #import "GraphViewController.h"
 #import "GraphView.h"
 #import "CalculatorBrains.h"
+#import "cs193GraphCalculatorFavoritesTableViewController.h"
 
-@interface GraphViewController ()<GraphViewDataSource>
+@interface GraphViewController ()<GraphViewDataSource,cs193GraphCalculatorFavoritesTableViewControllerDelegate>
 	@property (nonatomic, weak) IBOutlet GraphView *graphView;
 	@property (nonatomic, weak) IBOutlet UIToolbar *toolbar;        // to put splitViewBarButtonitem in
 
@@ -22,6 +23,7 @@
 @implementation GraphViewController
 
 
+#pragma mark - Controller Variables
 /* Controller Variables
  *****************************************************/
 	@synthesize splitViewBarButtonItem = _splitViewBarButtonItem;   // implementation of SplitViewBarButtonItemPresenter protocol
@@ -77,9 +79,30 @@
 		return _calcVariables;
 	}
 
+	#define FAVORITES_KEY @"CalculatorGraphViewController.Favorites"
+	- (IBAction)saveToFavs:(UIButton *)sender
+	{
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		NSMutableArray *favorites = [[defaults objectForKey:FAVORITES_KEY] mutableCopy];
+		if(!favorites) favorites = [NSMutableArray array];
+		[favorites addObject:self.programStack];
+		[defaults setObject:favorites forKey:FAVORITES_KEY];
+		[defaults synchronize];
+	}
 
+#pragma mark - Controller Specific Functions
 /* Controller Specific Functions
  *****************************************************/
+
+	- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+	{
+		if([segue.identifier isEqualToString:@"ShowFavorites"]){
+			NSArray *programs = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY];
+			[segue.destinationViewController setPrograms:programs];
+			[segue.destinationViewController setDelegate:self];
+		}
+	}
+
 	- (void)handleSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
 	{
 		NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
@@ -106,6 +129,7 @@
 		
 		[super viewDidLoad];
 		self.title	= [CalculatorBrains descriptionOfProgram:self.programStack];
+		if( self.title.length <= 0 ) self.title = @"Graph";
 		
 		[self handleSplitViewBarButtonItem:self.splitViewBarButtonItem];
 	}
@@ -123,7 +147,7 @@
 	}
 
 
-
+#pragma mark - GraphView Gestures and Setup
 /* GraphView Gestures and Setup
  *****************************************************/
 	- (void)setGraphView:(GraphView *)graphView
@@ -174,7 +198,7 @@
 		}
 	}
 
-
+#pragma mark - GraphView Protocols
 /* GraphView Protocols
  *****************************************************/
 	- (NSArray *)drawFunctionGraphView:(GraphView *)sender
@@ -207,6 +231,12 @@
 // View On Screen -> window = nil false || self.view.window
 // @psoperty (CGFloat) contentScaleFactor
 
-
+#pragma mark - Favorites Protocols
+/* Favorites Protocols
+ *****************************************************/
+- (void)cs193GraphCalculatorFavoritesTableViewController:(cs193GraphCalculatorFavoritesTableViewController *)sender choseProgram:(id)program
+{
+	self.programStack = program;
+}
 
 @end
