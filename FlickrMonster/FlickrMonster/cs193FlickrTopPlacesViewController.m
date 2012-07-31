@@ -18,7 +18,7 @@
 @implementation cs193FlickrTopPlacesViewController
 
 @synthesize flickrPlaces = _flickrPlaces;
-@synthesize flickrPhotos = _flickrPhotos;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -119,11 +119,10 @@
 {
 	NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
 	
-	if (!self.tableView && [segue.identifier isEqualToString:@"ShowGraph"]) {
+//	if (!self.tableView && [segue.identifier isEqualToString:@"ShowGraph"]) {
 		NSArray *photosList = [FlickrFetcher photosInPlace:[self.flickrPlaces objectAtIndex:indexPath.row] maxResults:50 ];
-		
 		[segue.destinationViewController setPhotoList:photosList withTitle:@"test" ];
-	}
+//	}
 }
 
 

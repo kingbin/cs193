@@ -11,7 +11,4 @@
 
 @interface cs193FlickrTopPlacesViewController : UITableViewController
 
-@property (nonatomic) NSDictionary *flickrPhotos;
-
-
 @end

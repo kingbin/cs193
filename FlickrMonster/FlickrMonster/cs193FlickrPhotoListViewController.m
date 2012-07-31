@@ -74,10 +74,19 @@
     static NSString *CellIdentifier = @"photoList";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+	if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+				initWithStyle:UITableViewCellStyleDefault
+				reuseIdentifier:CellIdentifier];
+    }
 	
-	
-    
+    NSDictionary *photoListDictionary = [self.photoList objectAtIndex:indexPath.row];
+
+	cell.textLabel.text = [photoListDictionary objectForKey:@"title"];
+	if(cell.textLabel.text.length <= 0) cell.textLabel.text = @"No Title";
+	cell.detailTextLabel.text = [[photoListDictionary objectForKey:@"description"] objectForKey:@"_content"];
+	if(cell.detailTextLabel.text.length <= 0) cell.detailTextLabel.text = @"No Description";
+
     return cell;
 }
 
