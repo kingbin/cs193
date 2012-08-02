@@ -54,4 +54,5 @@ build/
 *.mode1v3
 *.mode2v3
 */xcurserdata/*
-#CalculatorGraphing/Calculator.xcodeproj/project.xcworkspace/xcuserdata/*
+FlickrMonster/FlickrMonster.xcodeproj/project.xcworkspace/xcuserdata/*
+CalculatorGraphing/Calculator.xcodeproj/project.xcworkspace/xcuserdata/*
