@@ -53,5 +53,5 @@ build/
 
 *.mode1v3
 *.mode2v3
-#*\xcurserdata
-CalculatorGraphing/Calculator.xcodeproj/project.xcworkspace/xcuserdata/*
+*/xcurserdata/*
+#CalculatorGraphing/Calculator.xcodeproj/project.xcworkspace/xcuserdata/*
