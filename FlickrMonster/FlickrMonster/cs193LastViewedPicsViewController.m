@@ -1,25 +1,25 @@
 //
-//  cs193FlickrPhotoListViewController.m
+//  cs193LastViewedPicsViewController.m
 //  FlickrMonster
 //
-//  Created by Chris Blazek on 7/30/12.
+//  Created by Chris Blazek on 8/2/12.
 //  Copyright (c) 2012 Chris Blazek. All rights reserved.
 //
 
-#import "cs193FlickrPhotoListViewController.h"
+#import "cs193LastViewedPicsViewController.h"
 #import "cs193PhotoViewController.h"
 
 #import "FlickrFetcher/FlickrFetcher.h"
 
 #define LASTVIEWED_KEY @"Ccs193FlickrPhotoListViewController.LastViewed"
 
-@interface cs193FlickrPhotoListViewController ()
-
+@interface cs193LastViewedPicsViewController ()
+@property (nonatomic, weak) NSArray *lastViewedPhotos;
 @end
 
-@implementation cs193FlickrPhotoListViewController
+@implementation cs193LastViewedPicsViewController
 
-@synthesize photoList = _photoList;
+@synthesize lastViewedPhotos = _lastViewedPhotos;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -39,6 +39,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	
+	self.lastViewedPhotos = [[NSUserDefaults standardUserDefaults] objectForKey:LASTVIEWED_KEY];
 }
 
 - (void)viewDidUnload
@@ -48,25 +50,33 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	
+//	self.lastViewedPhotos = [[NSUserDefaults standardUserDefaults] objectForKey:LASTVIEWED_KEY];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - Table view data source
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.photoList count];
+    return [self.lastViewedPhotos count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"photoList";
+    static NSString *CellIdentifier = @"lastViewedPhotos";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
 	if (cell == nil) {
@@ -75,42 +85,26 @@
 				reuseIdentifier:CellIdentifier];
     }
 	
-    NSDictionary *photoListDictionary = [self.photoList objectAtIndex:indexPath.row];
-
-	cell.textLabel.text = [photoListDictionary objectForKey:@"title"];
+	NSDictionary *picInfo = [self.lastViewedPhotos objectAtIndex:indexPath.row];
+    
+	cell.textLabel.text = [picInfo objectForKey:@"title"];
 	if(cell.textLabel.text.length <= 0) cell.textLabel.text = @"No Title";
-	cell.detailTextLabel.text = [[photoListDictionary objectForKey:@"description"] objectForKey:@"_content"];
+	cell.detailTextLabel.text = [[picInfo objectForKey:@"description"] objectForKey:@"_content"];
 	if(cell.detailTextLabel.text.length <= 0) cell.detailTextLabel.text = @"No Description";
-
+	
     return cell;
 }
 
 
-/*
- 
- ******************************/
-
-- (void)setPhotoList:(NSArray *)photoList withTitle:(NSString *)title {
-	self.photoList = photoList;
-	self.title = title;
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	NSDictionary *photosInfo = [self.photoList objectAtIndex:self.tableView.indexPathForSelectedRow.row];
-	
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSMutableArray *lastViewed = [[defaults objectForKey:LASTVIEWED_KEY] mutableCopy];
-	if(!lastViewed) lastViewed = [NSMutableArray array];
-	
-	if(![lastViewed containsObject:photosInfo]){
-		[lastViewed addObject:photosInfo];
-		[defaults setObject:lastViewed forKey:LASTVIEWED_KEY];
-		[defaults synchronize];
-	}
-
+	NSDictionary *photosInfo = [self.lastViewedPhotos objectAtIndex:self.tableView.indexPathForSelectedRow.row];
 	[segue.destinationViewController setPhotoInfo:photosInfo ];
 }
+
+
+
+
 
 
 

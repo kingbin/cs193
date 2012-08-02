@@ -40,20 +40,6 @@
 	//self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
 	self.flickrPlaces = [FlickrFetcher topPlaces];
-	
-//	// How many top places in the array?
-//	NSLog(@"Number of top places returned: %i", [self.flickrPlaces count]);
-//	
-//	// What type of object is the value in the array?
-//	Class arrayObjectClass = [[self.flickrPlaces objectAtIndex:0] class];
-//	NSLog(@"Top places is an array of: %@", NSStringFromClass(arrayObjectClass));
-//	
-//	// Display the contents of the first item in the array
-//	NSLog(@"The description of the first top place is %@:",
-//		  [[self.flickrPlaces objectAtIndex:0] description]);
-	
-	
-	//[self loadPlayers];
 }
 
 - (void)viewDidUnload
@@ -113,21 +99,13 @@
 
 
 
-
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-	
-//	if (!self.tableView && [segue.identifier isEqualToString:@"ShowGraph"]) {
-		NSArray *photosList = [FlickrFetcher photosInPlace:[self.flickrPlaces objectAtIndex:indexPath.row] maxResults:50 ];
-		[segue.destinationViewController setPhotoList:photosList withTitle:@"test" ];
-//	}
+
+	NSArray *photosList = [FlickrFetcher photosInPlace:[self.flickrPlaces objectAtIndex:indexPath.row] maxResults:50 ];
+	[segue.destinationViewController setPhotoList:photosList withTitle:[[self.flickrPlaces objectAtIndex:indexPath.row] objectForKey:@"_content"] ];
 }
-
-
-
-
 
 
 
@@ -174,29 +152,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSLog(@"didSelectRowAtIndexPath HIT");
+//	NSLog(@"didSelectRowAtIndexPath HIT");
 }
-
-
-//- (void) loadPlayers
-//{
-//	NSMutableArray *players = [NSMutableArray arrayWithCapacity:20];
-//	Player *player = [[Player alloc] init];
-//	player.name = @"Bill Evans";
-//	player.game = @"Tic-Tac-Toe";
-//	player.rating = 4;
-//	[players addObject:player];
-//	player = [[Player alloc] init];
-//	player.name = @"Oscar Peterson";
-//	player.game = @"Spin the Bottle";
-//	player.rating = 5;
-//	[players addObject:player];
-//	player = [[Player alloc] init];
-//	player.name = @"Dave Brubeck";
-//	player.game = @"Texas Hold’em Poker";
-//	player.rating = 2;
-//	[players addObject:player];
-//	self.Players = players;
-//}
 
 @end

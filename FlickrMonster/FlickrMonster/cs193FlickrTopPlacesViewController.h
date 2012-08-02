@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FlickrFetcher/FlickrFetcher.h"
 
 @interface cs193FlickrTopPlacesViewController : UITableViewController
 

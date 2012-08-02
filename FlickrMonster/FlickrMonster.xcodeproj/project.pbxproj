@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F21F3E1D15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F3E1C15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.m */; };
+		F2D2E03D15CAF8AA009328B5 /* flickr_57.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D2E03C15CAF8AA009328B5 /* flickr_57.png */; };
+		F2D2E04015CAF931009328B5 /* flickr_114.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D2E03F15CAF931009328B5 /* flickr_114.png */; };
 		F2D8888415C1A13B00340813 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D8888315C1A13B00340813 /* UIKit.framework */; };
 		F2D8888615C1A13B00340813 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D8888515C1A13B00340813 /* Foundation.framework */; };
 		F2D8888815C1A13B00340813 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D8888715C1A13B00340813 /* CoreGraphics.framework */; };
@@ -23,14 +25,21 @@
 		F2D888A615C1A13B00340813 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D888A515C1A13B00340813 /* second.png */; };
 		F2D888A815C1A13B00340813 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D888A715C1A13B00340813 /* second@2x.png */; };
 		F2D888B015C1C20B00340813 /* cs193FlickrTopPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D888AF15C1C20B00340813 /* cs193FlickrTopPlacesViewController.m */; };
-		F2D888B215C1C7BF00340813 /* shoes.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F2D888B115C1C7BF00340813 /* shoes.jpeg */; };
 		F2D888B715C2F93D00340813 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D888B615C2F93D00340813 /* FlickrFetcher.m */; };
 		F2D888BA15C3425200340813 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D888B915C3425200340813 /* Player.m */; };
+		F2F1246915C8C66A0028E9D3 /* cs193PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F1246815C8C66A0028E9D3 /* cs193PhotoViewController.m */; };
+		F2F7C79915CABD3E00D95BD7 /* 23-bird.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F7C79715CABD3E00D95BD7 /* 23-bird.png */; };
+		F2F7C79A15CABD3E00D95BD7 /* 28-star.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F7C79815CABD3E00D95BD7 /* 28-star.png */; };
+		F2F7C79C15CABDCB00D95BD7 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F7C79B15CABDCB00D95BD7 /* camera@2x.png */; };
+		F2F7C79E15CABDD700D95BD7 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F7C79D15CABDD700D95BD7 /* camera.png */; };
+		F2F7C7A615CACA8A00D95BD7 /* cs193LastViewedPicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F7C7A515CACA8A00D95BD7 /* cs193LastViewedPicsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F21F3E1B15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cs193FlickrPhotoListViewController.h; sourceTree = "<group>"; };
 		F21F3E1C15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cs193FlickrPhotoListViewController.m; sourceTree = "<group>"; };
+		F2D2E03C15CAF8AA009328B5 /* flickr_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flickr_57.png; sourceTree = "<group>"; };
+		F2D2E03F15CAF931009328B5 /* flickr_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flickr_114.png; sourceTree = "<group>"; };
 		F2D8887F15C1A13B00340813 /* FlickrMonster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrMonster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2D8888315C1A13B00340813 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F2D8888515C1A13B00340813 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,12 +62,19 @@
 		F2D888A715C1A13B00340813 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		F2D888AE15C1C20B00340813 /* cs193FlickrTopPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cs193FlickrTopPlacesViewController.h; sourceTree = "<group>"; };
 		F2D888AF15C1C20B00340813 /* cs193FlickrTopPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cs193FlickrTopPlacesViewController.m; sourceTree = "<group>"; };
-		F2D888B115C1C7BF00340813 /* shoes.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shoes.jpeg; sourceTree = "<group>"; };
 		F2D888B415C2F93D00340813 /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
 		F2D888B515C2F93D00340813 /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		F2D888B615C2F93D00340813 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 		F2D888B815C3425200340813 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = FlickrMonster/Players/Player.h; sourceTree = "<group>"; };
 		F2D888B915C3425200340813 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = FlickrMonster/Players/Player.m; sourceTree = "<group>"; };
+		F2F1246715C8C66A0028E9D3 /* cs193PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cs193PhotoViewController.h; sourceTree = "<group>"; };
+		F2F1246815C8C66A0028E9D3 /* cs193PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cs193PhotoViewController.m; sourceTree = "<group>"; };
+		F2F7C79715CABD3E00D95BD7 /* 23-bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "23-bird.png"; sourceTree = "<group>"; };
+		F2F7C79815CABD3E00D95BD7 /* 28-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "28-star.png"; sourceTree = "<group>"; };
+		F2F7C79B15CABDCB00D95BD7 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		F2F7C79D15CABDD700D95BD7 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		F2F7C7A415CACA8A00D95BD7 /* cs193LastViewedPicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cs193LastViewedPicsViewController.h; sourceTree = "<group>"; };
+		F2F7C7A515CACA8A00D95BD7 /* cs193LastViewedPicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cs193LastViewedPicsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +94,8 @@
 		F2D8887415C1A13B00340813 = {
 			isa = PBXGroup;
 			children = (
+				F2D2E03F15CAF931009328B5 /* flickr_114.png */,
+				F2D2E03C15CAF8AA009328B5 /* flickr_57.png */,
 				F2D888BB15C3459A00340813 /* Players */,
 				F2D888B315C2F93D00340813 /* FlickrFetcher */,
 				F2D8888915C1A13B00340813 /* FlickrMonster */,
@@ -108,13 +126,20 @@
 			isa = PBXGroup;
 			children = (
 				F21F3E1B15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.h */,
+				F2F7C79D15CABDD700D95BD7 /* camera.png */,
+				F2F7C79B15CABDCB00D95BD7 /* camera@2x.png */,
 				F21F3E1C15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.m */,
 				F2D8889215C1A13B00340813 /* cs193AppDelegate.h */,
 				F2D8889315C1A13B00340813 /* cs193AppDelegate.m */,
 				F2D8889515C1A13B00340813 /* MainStoryboard_iPhone.storyboard */,
-				F2D888B115C1C7BF00340813 /* shoes.jpeg */,
+				F2F7C7A415CACA8A00D95BD7 /* cs193LastViewedPicsViewController.h */,
+				F2F7C7A515CACA8A00D95BD7 /* cs193LastViewedPicsViewController.m */,
+				F2F1246715C8C66A0028E9D3 /* cs193PhotoViewController.h */,
+				F2F1246815C8C66A0028E9D3 /* cs193PhotoViewController.m */,
 				F2D8889815C1A13B00340813 /* MainStoryboard_iPad.storyboard */,
 				F2D8889B15C1A13B00340813 /* cs193FirstViewController.h */,
+				F2F7C79715CABD3E00D95BD7 /* 23-bird.png */,
+				F2F7C79815CABD3E00D95BD7 /* 28-star.png */,
 				F2D8889C15C1A13B00340813 /* cs193FirstViewController.m */,
 				F2D8889E15C1A13B00340813 /* first.png */,
 				F2D888A015C1A13B00340813 /* first@2x.png */,
@@ -219,7 +244,12 @@
 				F2D888A115C1A13B00340813 /* first@2x.png in Resources */,
 				F2D888A615C1A13B00340813 /* second.png in Resources */,
 				F2D888A815C1A13B00340813 /* second@2x.png in Resources */,
-				F2D888B215C1C7BF00340813 /* shoes.jpeg in Resources */,
+				F2F7C79915CABD3E00D95BD7 /* 23-bird.png in Resources */,
+				F2F7C79A15CABD3E00D95BD7 /* 28-star.png in Resources */,
+				F2F7C79C15CABDCB00D95BD7 /* camera@2x.png in Resources */,
+				F2F7C79E15CABDD700D95BD7 /* camera.png in Resources */,
+				F2D2E03D15CAF8AA009328B5 /* flickr_57.png in Resources */,
+				F2D2E04015CAF931009328B5 /* flickr_114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +268,8 @@
 				F2D888B715C2F93D00340813 /* FlickrFetcher.m in Sources */,
 				F2D888BA15C3425200340813 /* Player.m in Sources */,
 				F21F3E1D15C6F4BB006DD1AA /* cs193FlickrPhotoListViewController.m in Sources */,
+				F2F1246915C8C66A0028E9D3 /* cs193PhotoViewController.m in Sources */,
+				F2F7C7A615CACA8A00D95BD7 /* cs193LastViewedPicsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +311,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "KGB Code Signing";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "KGB Code Signing";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -294,6 +327,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -307,7 +342,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "KGB Code Signing";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "KGB Code Signing";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -316,6 +352,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
