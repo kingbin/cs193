@@ -13,6 +13,7 @@
 
 @interface cs193FlickrTopPlacesViewController ()
 	@property (nonatomic) NSArray *flickrPlaces;
+	@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *spinner;
 @end
 
 @implementation cs193FlickrTopPlacesViewController

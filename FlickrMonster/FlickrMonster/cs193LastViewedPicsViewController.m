@@ -39,8 +39,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
-	self.lastViewedPhotos = [[NSUserDefaults standardUserDefaults] objectForKey:LASTVIEWED_KEY];
 }
 
 - (void)viewDidUnload
@@ -52,7 +50,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	
-//	self.lastViewedPhotos = [[NSUserDefaults standardUserDefaults] objectForKey:LASTVIEWED_KEY];
+	self.lastViewedPhotos = [[NSUserDefaults standardUserDefaults] objectForKey:LASTVIEWED_KEY];
+	[self.tableView reloadData];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

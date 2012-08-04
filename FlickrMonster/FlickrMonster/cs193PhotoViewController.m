@@ -14,12 +14,16 @@
 @property (weak, nonatomic) IBOutlet UIImageView *flickrImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+
 @end
 
 @implementation cs193PhotoViewController
 
 @synthesize flickrImageView = _flickrImageView;
 @synthesize scrollView = _scrollView;
+
+@synthesize spinner = _spinner;
 
 @synthesize photoInfo = _photoInfo;
 - (void)setPhotoInfo:(NSDictionary *)photoInfo {
@@ -47,6 +51,7 @@
 {
 	[self setFlickrImageView:nil];
 	[self setScrollView:nil];
+	[self setSpinner:nil];
 	[super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -63,19 +68,35 @@
 
 
 - (void)loadFlickrImage{
-	NSData *img = [NSData dataWithContentsOfURL:[FlickrFetcher urlForPhoto:self.photoInfo format:FlickrPhotoFormatLarge]];
-
-	self.flickrImageView.image = [UIImage imageWithData:img];
-	self.title = [self.photoInfo objectForKey:@"title"];
+	[self.spinner startAnimating];
 	
-	self.scrollView.contentSize = self.flickrImageView.image.size;
-	self.scrollView.zoomScale = 1;
-	self.flickrImageView.frame = CGRectMake(0, 0, self.flickrImageView.image.size.width, self.flickrImageView.image.size.height);
+	dispatch_queue_t dispatchQueue = dispatch_queue_create("q_photo", NULL);
 	
-	float widthRatio = self.view.bounds.size.width / self.flickrImageView.image.size.width;
-	float heightRatio = self.view.bounds.size.height / self.flickrImageView.image.size.height;
-	self.scrollView.zoomScale = MAX(widthRatio, heightRatio);
+	// Load the image using the queue
+	dispatch_async(dispatchQueue, ^{
+		NSData *img = [NSData dataWithContentsOfURL:[FlickrFetcher urlForPhoto:self.photoInfo format:FlickrPhotoFormatLarge]];
+		
+		// Use the main queue to store the photo in NSUserDefaults and to display
+		dispatch_async(dispatch_get_main_queue(), ^{
+			self.flickrImageView.image = [UIImage imageWithData:img];
+			self.title = [self.photoInfo objectForKey:@"title"];
+			
+			self.scrollView.contentSize = self.flickrImageView.image.size;
+			self.scrollView.zoomScale = 1;
+			self.flickrImageView.frame = CGRectMake(0, 0, self.flickrImageView.image.size.width, self.flickrImageView.image.size.height);
+			
+			float widthRatio = self.view.bounds.size.width / self.flickrImageView.image.size.width;
+			float heightRatio = self.view.bounds.size.height / self.flickrImageView.image.size.height;
+			self.scrollView.zoomScale = MAX(widthRatio, heightRatio);
+			[self.spinner stopAnimating];
+		});
+		
+	});
+	dispatch_release(dispatchQueue);
 }
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
 	if(self.photoInfo) [self loadFlickrImage];
