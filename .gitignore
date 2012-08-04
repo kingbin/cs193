@@ -40,3 +40,19 @@ Thumbs.db
 # XCode workspace files #
 #####################
 *.xcworkspace/*
+
+.DS_Store
+*.swp
+*~.nib
+
+build/
+
+*.pbxuser
+*.perspective
+*.perspectivev3
+
+*.mode1v3
+*.mode2v3
+*/xcurserdata/*
+FlickrMonster/FlickrMonster.xcodeproj/project.xcworkspace/xcuserdata/*
+CalculatorGraphing/Calculator.xcodeproj/project.xcworkspace/xcuserdata/*
