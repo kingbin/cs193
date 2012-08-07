@@ -8,11 +8,16 @@
 
 #import "cs193FlickrMapViewController.h"
 
-@interface cs193FlickrMapViewController ()
-
+@interface cs193FlickrMapViewController () <MKMapViewDelegate>
+	@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @end
 
+
 @implementation cs193FlickrMapViewController
+
+@synthesize mapView = _mapView;
+@synthesize annotations = _annotations;
+@synthesize delegate = _delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
