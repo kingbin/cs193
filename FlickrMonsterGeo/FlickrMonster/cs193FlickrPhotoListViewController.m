@@ -10,11 +10,12 @@
 #import "cs193PhotoViewController.h"
 #import "cs193FlickrMapViewController.h"
 
+#import "FlickrPhotoAnnotation.h"
 #import "FlickrFetcher/FlickrFetcher.h"
 
 #define LASTVIEWED_KEY @"Ccs193FlickrPhotoListViewController.LastViewed"
 
-@interface cs193FlickrPhotoListViewController ()
+@interface cs193FlickrPhotoListViewController () <cs193FlickrMapViewControllerDelegate>
 
 @end
 
@@ -48,12 +49,38 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
-
+\
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if([segue.identifier isEqualToString:@"ShowImage"]){
+		NSDictionary *photosInfo = [self.photoList objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+		
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		NSMutableArray *lastViewed = [[defaults objectForKey:LASTVIEWED_KEY] mutableCopy];
+		if(!lastViewed) lastViewed = [NSMutableArray array];
+		
+		if(![lastViewed containsObject:photosInfo]){
+			[lastViewed addObject:photosInfo];
+			[defaults setObject:lastViewed forKey:LASTVIEWED_KEY];
+			[defaults synchronize];
+		}
+		
+		[segue.destinationViewController setPhotoInfo:photosInfo ];
+	}
+	else if( !self.splitViewController && [segue.identifier isEqualToString:@"ShowMap"] ){
+		cs193FlickrMapViewController *controller = (cs193FlickrMapViewController *)segue.destinationViewController;
+        controller.delegate = self;
+		[segue.destinationViewController setAnnotations:[self mapAnnotations]];
+	}
+}
+
+
+#pragma mark - TableView Functions
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -87,38 +114,42 @@
 }
 
 
-/*
- 
- ******************************/
-
+#pragma mark - PhotoListViewController Public Functions
 - (void)setPhotoList:(NSArray *)photoList withTitle:(NSString *)title {
 	self.photoList = photoList;
 	self.title = title;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-	
-	if([segue.identifier isEqualToString:@"ShowFavorites"]){
-		NSDictionary *photosInfo = [self.photoList objectAtIndex:self.tableView.indexPathForSelectedRow.row];
-		
-		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		NSMutableArray *lastViewed = [[defaults objectForKey:LASTVIEWED_KEY] mutableCopy];
-		if(!lastViewed) lastViewed = [NSMutableArray array];
-		
-		if(![lastViewed containsObject:photosInfo]){
-			[lastViewed addObject:photosInfo];
-			[defaults setObject:lastViewed forKey:LASTVIEWED_KEY];
-			[defaults synchronize];
-		}
 
-		[segue.destinationViewController setPhotoInfo:photosInfo ];
-	}
-	else if([segue.identifier isEqualToString:@"showMap"]){
-		//[segue.destinationViewController ]
-	}
+#pragma mark - MapViewControllerDelegate
+- (UIImage *)mapViewController:(cs193FlickrMapViewController *)sender imageForAnnotation:(id <MKAnnotation>)annotation
+{
+    FlickrPhotoAnnotation *fpa = (FlickrPhotoAnnotation *)annotation;
+    NSURL *url = [FlickrFetcher urlForPhoto:fpa.photo format:FlickrPhotoFormatSquare];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    return data ? [UIImage imageWithData:data] : nil;
 }
 
+//- (UIView *)mapViewController:(cs193FlickrMapViewController *)sender viewForSegue:(id <MKAnnotation>)annotation
+//{
+//    FlickrPhotoAnnotation *fpa = (FlickrPhotoAnnotation *)annotation;
+//	NSDictionary *photosInfo = fpa.photo;
+//
+//	[segue.destinationViewController setPhotoInfo:photosInfo ];
+//	[self performSegueWithIdentifier:@"ShowImage" sender:self];
+//}
+
+
+
+#pragma mark - MapviewController Annotations Helper
+- (NSArray *)mapAnnotations
+{
+    NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[self.photoList count]];
+    for (NSDictionary *photo in self.photoList) {
+        [annotations addObject:[FlickrPhotoAnnotation annotationForPhoto:photo]];
+    }
+    return annotations;
+}
 
 
 /*

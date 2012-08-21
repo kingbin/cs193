@@ -40,7 +40,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="Z7n-YA-klH" kind="push" id="ac2-8J-4V0"/>
+                                    <segue destination="Z7n-YA-klH" kind="push" identifier="ShowFavorites" id="ac2-8J-4V0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -153,7 +153,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="HIh-Mc-mFk" kind="push" id="9Ai-Qn-r0v"/>
+                                    <segue destination="HIh-Mc-mFk" kind="push" identifier="ShowImageList" id="FDa-S8-Wax"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -176,7 +176,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="9zS-H9-K6H">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="9zS-H9-K6H">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
@@ -185,11 +185,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="z7G-Tv-g4j"/>
                     <connections>
-                        <outlet property="mapView" destination="9zS-H9-K6H" id="FPB-yN-dOe"/>
+                        <outlet property="mapView" destination="9zS-H9-K6H" id="VLV-da-OVQ"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2196" y="-477"/>
+            <point key="canvasLocation" x="2242" y="-505"/>
         </scene>
         <!--Cs193 Flickr Photo List View Controller-->
         <scene sceneID="drB-Dh-8UZ">
@@ -226,7 +226,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="Z7n-YA-klH" kind="push" id="mVZ-jB-cID"/>
+                                    <segue destination="Z7n-YA-klH" kind="push" identifier="ShowImage" id="MUd-ep-pXI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -236,27 +236,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="FJK-vL-96s">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="vEr-eV-Nmi">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rvr-Np-sCx">
-                                <rect key="frame" x="244" y="4" width="71" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Map">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="fBT-Xu-rrn">
                             <connections>
-                                <segue destination="AoP-X0-8lf" kind="push" identifier="showMap" id="FAD-P9-FKa"/>
+                                <segue destination="AoP-X0-8lf" kind="push" identifier="ShowMap" id="vlL-js-FMt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1720" y="-38"/>
+            <point key="canvasLocation" x="1778" y="-204"/>
         </scene>
         <!--Cs193 Photo View Controller-->
         <scene sceneID="VJ0-dQ-cSv">
@@ -296,7 +284,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2270" y="308"/>
+            <point key="canvasLocation" x="2700" y="313"/>
         </scene>
     </scenes>
     <resources>
@@ -337,6 +325,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="mVZ-jB-cID"/>
+        <segue reference="ac2-8J-4V0"/>
     </inferredMetricsTieBreakers>
 </document>

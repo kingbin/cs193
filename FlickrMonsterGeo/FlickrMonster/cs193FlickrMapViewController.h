@@ -12,7 +12,8 @@
 @class cs193FlickrMapViewController;
 
 @protocol cs193FlickrMapViewControllerDelegate <NSObject>
-- (UIImage *)mapViewController:(cs193FlickrMapViewController *)sender imageForAnnotation:(id <MKAnnotation>)annotation;
+/*@optional*/ - (UIImage *)mapViewController:(cs193FlickrMapViewController *)sender imageForAnnotation:(id <MKAnnotation>)annotation;
+	@optional - (UIView *)mapViewController:(cs193FlickrMapViewController *)sender viewForSegue:(id <MKAnnotation>)annotation;
 @end
 
 @interface cs193FlickrMapViewController : UIViewController

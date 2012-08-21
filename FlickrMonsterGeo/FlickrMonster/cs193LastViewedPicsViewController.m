@@ -88,7 +88,7 @@
     
 	cell.textLabel.text = [picInfo objectForKey:@"title"];
 	if(cell.textLabel.text.length <= 0) cell.textLabel.text = @"No Title";
-	cell.detailTextLabel.text = [[picInfo objectForKey:@"description"] objectForKey:@"_content"];
+	cell.detailTextLabel.text = [[picInfo objectForKey:@"description"] objectForKey:FLICKR_PLACE_NAME];
 	if(cell.detailTextLabel.text.length <= 0) cell.detailTextLabel.text = @"No Description";
 	
     return cell;
@@ -97,8 +97,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	NSDictionary *photosInfo = [self.lastViewedPhotos objectAtIndex:self.tableView.indexPathForSelectedRow.row];
-	[segue.destinationViewController setPhotoInfo:photosInfo ];
+	if([segue.identifier isEqualToString:@"ShowFavorites"]){
+		NSDictionary *photosInfo = [self.lastViewedPhotos objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+		[segue.destinationViewController setPhotoInfo:photosInfo ];
+	}
 }
 
 

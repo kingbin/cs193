@@ -11,7 +11,11 @@
 
 #import "cs193FlickrPhotoListViewController.h"
 
-@interface cs193FlickrTopPlacesViewController ()
+#import "cs193FlickrMapViewController.h"
+#import "FlickrPhotoAnnotation.h"
+
+
+@interface cs193FlickrTopPlacesViewController () <cs193FlickrMapViewControllerDelegate>
 	@property (nonatomic) NSArray *flickrPlaces;
 	@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *spinner;
 @end
@@ -102,13 +106,23 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+	if([segue.identifier isEqualToString:@"ShowImageList"]){
+		NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
 
-	NSArray *photosList = [FlickrFetcher photosInPlace:[self.flickrPlaces objectAtIndex:indexPath.row] maxResults:50 ];
-	[segue.destinationViewController setPhotoList:photosList withTitle:[[self.flickrPlaces objectAtIndex:indexPath.row] objectForKey:@"_content"] ];
+		NSArray *photosList = [FlickrFetcher photosInPlace:[self.flickrPlaces objectAtIndex:indexPath.row] maxResults:50 ];
+		
+//		[segue.destinationViewController setPhotoList:photosList withTitle:[[self.flickrPlaces objectAtIndex:indexPath.row] objectForKey:FLICKR_PLACE_NAME] ];
+		[segue.destinationViewController setPhotoList:photosList withTitle:[[self.flickrPlaces objectAtIndex:indexPath.row] objectForKey:FLICKR_PLACE_NAME] ];
+		}
 }
 
-
+- (UIImage *)mapViewController:(cs193FlickrMapViewController *)sender imageForAnnotation:(id <MKAnnotation>)annotation
+{
+    FlickrPhotoAnnotation *fpa = (FlickrPhotoAnnotation *)annotation;
+    NSURL *url = [FlickrFetcher urlForPhoto:fpa.photo format:FlickrPhotoFormatSquare];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    return data ? [UIImage imageWithData:data] : nil;
+}
 
 /*
 // Override to support conditional editing of the table view.
