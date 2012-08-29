@@ -9,6 +9,9 @@
 #import "cs193FlickrMapViewController.h"
 #import "FlickrPhotoAnnotation.h"
 
+#import "cs193PhotoViewController.h"
+#define LASTVIEWED_KEY @"Ccs193FlickrPhotoListViewController.LastViewed"
+
 @interface cs193FlickrMapViewController () <MKMapViewDelegate>
 	@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 //	@property (weak, nonatomic) MKCoordinateRegion region;
@@ -111,10 +114,6 @@
     [mapView setRegion:region animated:animated];
 }
 
-
-
-
-
 #pragma mark - MKMapViewDelegate
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
@@ -141,9 +140,38 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    NSLog(@"callout accessory tapped for annotation %@", [view.annotation title]);
-//	[self performSegueWithIdentifier:@"presentDetailViewController" sender:self];
+	//NSLog(@"callout accessory tapped for annotation %@", [view.annotation title]);
+	
+    FlickrPhotoAnnotation *fa = view.annotation;
+    id vc = [self.splitViewController.viewControllers lastObject];
+    if ([vc isKindOfClass:[cs193PhotoViewController class]])
+        [vc setPhoto:fa.photo];
+    else {
+        [self performSegueWithIdentifier:@"ShowImage" sender:fa.photo];
+	}
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if( [[segue identifier] isEqualToString:@"ShowImage"] ) {
+		
+/*********
+	Prob need to move this chunk out of this perpareForSegue & PhotoListViewController as well and add to the photoviewcontroller */
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		NSMutableArray *lastViewed = [[defaults objectForKey:LASTVIEWED_KEY] mutableCopy];
+		if(!lastViewed) lastViewed = [NSMutableArray array];
+		
+		if(![lastViewed containsObject:sender]){
+			[lastViewed addObject:sender];
+			[defaults setObject:lastViewed forKey:LASTVIEWED_KEY];
+			[defaults synchronize];
+		}
+/*********/
+		
+		[segue.destinationViewController performSelector:@selector(setPhotoInfo:) withObject:sender];
+	}
+}
+
 @end
 
 

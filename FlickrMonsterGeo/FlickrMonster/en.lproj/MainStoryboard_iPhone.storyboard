@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
@@ -186,6 +186,7 @@
                     <navigationItem key="navigationItem" id="z7G-Tv-g4j"/>
                     <connections>
                         <outlet property="mapView" destination="9zS-H9-K6H" id="VLV-da-OVQ"/>
+                        <segue destination="Z7n-YA-klH" kind="push" identifier="ShowImage" id="QVm-n9-1jL"/>
                     </connections>
                 </viewController>
             </objects>
@@ -284,7 +285,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2700" y="313"/>
+            <point key="canvasLocation" x="2735" y="-27"/>
         </scene>
     </scenes>
     <resources>
@@ -325,6 +326,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ac2-8J-4V0"/>
+        <segue reference="QVm-n9-1jL"/>
     </inferredMetricsTieBreakers>
 </document>
