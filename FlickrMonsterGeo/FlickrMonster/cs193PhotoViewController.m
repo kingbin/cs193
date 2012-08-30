@@ -9,6 +9,8 @@
 #import "cs193PhotoViewController.h"
 #import "FlickrFetcher/FlickrFetcher.h"
 
+#import "cs193CacheData.h"
+
 @interface cs193PhotoViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *flickrImageView;
@@ -74,7 +76,15 @@
 	
 	// Load the image using the queue
 	dispatch_async(dispatchQueue, ^{
-		NSData *img = [NSData dataWithContentsOfURL:[FlickrFetcher urlForPhoto:self.photoInfo format:FlickrPhotoFormatLarge]];
+		
+		// Fetch the image from the cache
+		NSData *img = [cs193CacheData fetchData:[self.photoInfo objectForKey:@"id"]];
+		if (!img) {
+			img = [NSData dataWithContentsOfURL:[FlickrFetcher urlForPhoto:self.photoInfo format:FlickrPhotoFormatLarge]]; // Retrieve the image from Flickr
+			[cs193CacheData storeData:[self.photoInfo objectForKey:@"id"] :img];
+		}
+
+//		NSData *img = [NSData dataWithContentsOfURL:[FlickrFetcher urlForPhoto:self.photoInfo format:FlickrPhotoFormatLarge]];
 		
 		// Use the main queue to store the photo in NSUserDefaults and to display
 		dispatch_async(dispatch_get_main_queue(), ^{

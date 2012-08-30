@@ -11,6 +11,7 @@
 		F2A529CF15D0B94200BEE278 /* cs193FlickrMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A529CE15D0B94200BEE278 /* cs193FlickrMapViewController.m */; };
 		F2A529D315D8A4E700BEE278 /* FlickrPhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A529D215D8A4E700BEE278 /* FlickrPhotoAnnotation.m */; };
 		F2A529D615D8A60B00BEE278 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A529D515D8A60B00BEE278 /* MapKit.framework */; };
+		F2B872FD15EF11A7006323DA /* cs193CacheData.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B872FC15EF11A7006323DA /* cs193CacheData.m */; };
 		F2D2E03D15CAF8AA009328B5 /* flickr_57.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D2E03C15CAF8AA009328B5 /* flickr_57.png */; };
 		F2D2E04015CAF931009328B5 /* flickr_114.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D2E03F15CAF931009328B5 /* flickr_114.png */; };
 		F2D6493915DC27FD00E637DC /* FlickrMonsterModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2D6493715DC27FD00E637DC /* FlickrMonsterModel.xcdatamodeld */; };
@@ -45,6 +46,8 @@
 		F2A529D115D8A4E700BEE278 /* FlickrPhotoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotoAnnotation.h; sourceTree = "<group>"; };
 		F2A529D215D8A4E700BEE278 /* FlickrPhotoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotoAnnotation.m; sourceTree = "<group>"; };
 		F2A529D515D8A60B00BEE278 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F2B872FB15EF11A7006323DA /* cs193CacheData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cs193CacheData.h; path = FlickrMonster/cs193CacheData.h; sourceTree = "<group>"; };
+		F2B872FC15EF11A7006323DA /* cs193CacheData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cs193CacheData.m; path = FlickrMonster/cs193CacheData.m; sourceTree = "<group>"; };
 		F2D2E03C15CAF8AA009328B5 /* flickr_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flickr_57.png; path = ../flickr_57.png; sourceTree = "<group>"; };
 		F2D2E03F15CAF931009328B5 /* flickr_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flickr_114.png; path = ../flickr_114.png; sourceTree = "<group>"; };
 		F2D6493815DC27FD00E637DC /* FlickrMonsterModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlickrMonsterModel.xcdatamodel; sourceTree = "<group>"; };
@@ -117,6 +120,8 @@
 		F2D8887415C1A13B00340813 = {
 			isa = PBXGroup;
 			children = (
+				F2B872FB15EF11A7006323DA /* cs193CacheData.h */,
+				F2B872FC15EF11A7006323DA /* cs193CacheData.m */,
 				F2A529D515D8A60B00BEE278 /* MapKit.framework */,
 				F2A529D415D8A4F600BEE278 /* Images */,
 				F2D888BB15C3459A00340813 /* Players */,
@@ -287,6 +292,7 @@
 				F2A529CF15D0B94200BEE278 /* cs193FlickrMapViewController.m in Sources */,
 				F2A529D315D8A4E700BEE278 /* FlickrPhotoAnnotation.m in Sources */,
 				F2D6493915DC27FD00E637DC /* FlickrMonsterModel.xcdatamodeld in Sources */,
+				F2B872FD15EF11A7006323DA /* cs193CacheData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
