@@ -14,5 +14,6 @@ This class has given me a good start on iPhone development and an understanding 
 
 My solutions may not be perfect, but I believe they’re a good start to something good.
 
-As always, critisism is encouraged, I’m eager to learn.
+As always, criticism is encouraged, I’m eager to learn.
+
 ~Chris
